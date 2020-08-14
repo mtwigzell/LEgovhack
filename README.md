@@ -2,6 +2,7 @@
 
 # Team members:  
 + [Marc Wigzell](https://github.com/mtwigzell)  
++ [David Lim]()  
 + [Elena Tartaglia](https://github.com/eigensong)  
 + [Erika Duan](https://github.com/erikaduan)  
 + [Oliver Berry](https://github.com/OllieB123)  
@@ -16,8 +17,11 @@
    *Many people have been heavily impacted by COVID-19. These impacts may be more than financial. ATO data may assist in identifying these people for targeted support, financial or otherwise. Identifying all impacted industries is a challenge. How do we know we are providing the full range of support to all people impacted.* 
 
 # Datasets:  
-+ ATO taxation data (Pre-Covid19 data source)  
-  + https://data.gov.au/data/dataset/taxation-statistics-2017-18  
+
+## Datasets to help us identify people who need assistance:  
+
++ ATO taxation data (Pre COVID-19 data source on individuals by broad industry)  
+  + https://data.gov.au/data/dataset/taxation-statistics-2017-18/resource/edb9a9aa-c977-4a7a-a1f9-515b7b2b1f32  
 
 + ABS Labour Force, ABS Characteristics of Employment  
 
@@ -27,7 +31,12 @@
 
 + Smaller sections in industries that are more hard hit?  
 
+## Datasets to help us identify COVID-19 zones:  
+
++ NSW COVID-19 location information  
+  + https://data.gov.au/search?format=csv&format=arcgis%20rest%20service&page=2&q=covid  
+
 # Ideas:  
 
-Phase 1: Identify people in industries most affected by COVID-19?  
-Phase 2: Determine how to assist them?  
+**Phase 1:** Identify people in industries most affected by COVID-19?  
+**Phase 2:** Determine how to assist them (i.e. financially)?  
