@@ -23,13 +23,15 @@
 + ATO taxation data (Pre COVID-19 data source on individuals by broad industry)  
   + https://data.gov.au/data/dataset/taxation-statistics-2017-18/resource/edb9a9aa-c977-4a7a-a1f9-515b7b2b1f32  
 
-+ ABS Labour Force, ABS Characteristics of Employment  
++ ABS labour force detailed data  
+  + https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/latest-release  
+  
++ DESE May 2020 job seeker data  
+  + https://data.gov.au/data/dataset/job-seeker-data-may-2020/resource/62c7c4dc-4f47-489d-aa21-5f8d7c25c530  
+  + Dataset contains very detailed demographical data.  
 
-+ Datasets identifying gaps in vulnerable people?  
-
-+ Datasets around location of people applying for Jobkeeper/ Jobseeker?  
-
-+ Smaller sections in industries that are more hard hit?  
++ Datasets identifying data gaps describing vulnerable people?  
++ Datasets with more granular information on smaller sections in broad industries that have been hardest hit?  
 
 ## Datasets to help us identify COVID-19 zones:  
 
