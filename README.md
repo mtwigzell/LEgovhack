@@ -20,3 +20,14 @@
   + https://data.gov.au/data/dataset/taxation-statistics-2017-18  
 
 + ABS Labour Force, ABS Characteristics of Employment  
+
++ Datasets identifying gaps in vulnerable people?  
+
++ Datasets around location of people applying for Jobkeeper/ Jobseeker?  
+
++ Smaller sections in industries that are more hard hit?  
+
+# Ideas:  
+
+Phase 1: Identify people in industries most affected by COVID-19?  
+Phase 2: Determine how to assist them?  
