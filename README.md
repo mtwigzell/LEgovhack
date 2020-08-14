@@ -23,8 +23,11 @@
 + ATO taxation data (Pre COVID-19 data source on individuals by broad industry)  
   + https://data.gov.au/data/dataset/taxation-statistics-2017-18/resource/edb9a9aa-c977-4a7a-a1f9-515b7b2b1f32  
 
-+ ABS labour force detailed data  
++ ABS labour force detailed data (May 2020)  
   + https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/latest-release  
+
++ ABS labour force detailed data (May 2019)  
+  + https://www.abs.gov.au/AUSSTATS/abs@.nsf/Lookup/6291.0.55.001Main+Features1May%202019?OpenDocument=  
   
 + DESE May 2020 job seeker data  
   + https://data.gov.au/data/dataset/job-seeker-data-may-2020/resource/62c7c4dc-4f47-489d-aa21-5f8d7c25c530  
