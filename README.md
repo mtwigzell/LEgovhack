@@ -36,10 +36,23 @@
 + Datasets identifying data gaps describing vulnerable people?  
 + Datasets with more granular information on smaller sections in broad industries that have been hardest hit?  
 
++ ABS Job Counts
+   + https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/6160.0.55.001Week%20ending%2025%20July%202020?OpenDocument (Table 3)
+   + This breaks down each Industries job loss into age groups and gender.
+   
+ + ABS 2016 Census (Tablebuilder)
+ 
+ 
+ + ABS National Accounts - Input Output Tables
+   + https://www.abs.gov.au/AUSSTATS/abs@.nsf/mf/5209.0.55.001
+
 ## Datasets to help us identify COVID-19 zones:  
 
 + NSW COVID-19 location information  
   + https://data.gov.au/search?format=csv&format=arcgis%20rest%20service&page=2&q=covid  
+  
+ + Job Loses - SA4
+   + https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/6160.0.55.001Week%20ending%2025%20July%202020?OpenDocument (Table 5)
 
 # Ideas:  
 
