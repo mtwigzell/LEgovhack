@@ -1,0 +1,111 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r, echo = TRUE, message = FALSE, warning = FALSE}  
+#-----load required packages-----  
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse,
+               lubridate, 
+               here,
+               readxl,
+               kml,  
+               janitor) # for lemmatisation and stemming    
+```
+
+# Dataset background  
+
+## 2020-1980_ABS_industry_subdivision_and_sex (Table 6)     
+
+Employed persons by Industry sub-division of main job (ANZSIC) and Sex.    
+
+Sheets of interest:
++ All data sheets with prefix "Data"    
+
+```{r}
+#-----load table 6-----
+# https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/latest-release#industry-occupation-and-sector
+
+data_path <- here::here("01_raw_data", "2020-1980_ABS_industry_subdivision_and_sex.xlsx")
+
+labour_datasets <- data_path %>%
+  excel_sheets() %>%
+  set_names() %>%
+  str_subset(., "Data.") %>%  
+  map_df(read_excel,
+         col_names = T, 
+         path = data_path) 
+
+labour_datasets <- labour_datasets %>%
+  slice(10: nrow(labour_datasets)) %>%
+  rename(date = ...1) %>%
+  mutate(date = as.Date(as.numeric(date), origin = "1899-12-30")) 
+
+#-----remove summary columns-----  
+remove_cols <- str_subset(colnames(labour_datasets), "(^Employed)|(^\\> Employed)")  
+
+labour_datasets <- labour_datasets %>%
+  select(- remove_cols)
+
+#-----clean labour datasets-----  
+tidy_labour <- labour_datasets %>%
+  pivot_longer(cols = -date,
+               names_to = "column_name",
+               values_to = "count") # units in 1000s  
+
+tidy_labour <- tidy_labour %>%
+  mutate(count = as.numeric(count),
+         main_industry = str_extract(column_name, "^[A-Z][^;]+(?=;)"),
+         sub_industry = str_extract(column_name, "^\\s{0,1}\\>{1}[^;]+"),
+         sub_industry = str_replace(sub_industry, "\\>", ""),
+         gender = str_extract(column_name, "(Males)|(Females)"),
+         gender = case_when(is.na(gender) ~ "total",
+                            TRUE ~ tolower(gender)),  
+         employ_type = str_extract(column_name, "(?<=Employed)[^;]+(?=;)")) %>%
+  mutate_at(vars(contains("_industry"), employ_type), ~ trimws(.x)) %>% 
+  fill(main_industry, .direction = "down") %>%
+  select(-column_name)  
+
+# check main_industry 
+unique(tidy_labour$main_industry) 
+
+write_csv(tidy_labour, here::here("02_outputs", "clean_data", "tidy_industry_sub_division_and_gender.csv"))  
+```
+
+
+## Explore bigger picture changes  
+
+```{r}
+#-----filter changes and explore long term picture-----  
+all_labour <- tidy_labour %>%
+  filter(main_industry != "Employed total") %>% 
+  filter(is.na(sub_industry),
+         gender == "total",
+         employ_type == "total") %>%
+  select(date,
+         count,
+         main_industry) %>%
+  distinct_all() %>% 
+  group_by(main_industry) %>%
+  arrange(date) %>% 
+  mutate(norm_factor = first(na.omit(count)),
+         norm_count = count/norm_factor) %>%
+  ungroup() %>%
+  filter(!is.na(count))
+
+#-----create cld object-----  
+cld_cols <- colnames(all_labour)[!(colnames(all_labour) %in% c("date", "norm_factor"))]
+
+all_labour_cld <- cld(all_labour[cld_cols])
+
+
+all_labour %>%
+  ggplot(aes(x = date, 
+             y = norm_count,
+             colour = main_industry)) +
+  geom_line() +
+  ylim(0, 5) +
+  theme_bw() 
+```
+
