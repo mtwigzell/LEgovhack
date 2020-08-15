@@ -6,10 +6,14 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(RColorBrewer)
 ```
 
 *Challenge: How can we help identify and assist people in industries most affected by COVID-19?*
+
+## Read data
 
 ```{r}
 table4 = readxl::read_excel(here::here("data", "6291004.xls"),
@@ -18,19 +22,71 @@ table4 = readxl::read_excel(here::here("data", "6291004.xls"),
                             skip = 9)
 # take every third column because that contains original counts
 table4 = table4[, seq(1, ncol(table4), 3)]
+names(table4)[names(table4) == "Series ID"] = "Quarter"
+# create long version of data
+table4_long = table4 %>%
+  gather(key = "Industry", value = "Employment", -Quarter)
 ```
 
 Make a table of industry names 
 
 ```{r}
-names = readxl::read_excel(here::here("data", "6291004.xls"),
+industry_names = readxl::read_excel(here::here("data", "6291004.xls"),
                             sheet = "Data1",
                             col_names = paste0("C", 1:61),
                             n_max = 10)
-names = names[, seq(1, ncol(names), 3)]
-colnames(names) = names[10, ]
+industry_names = industry_names[, seq(1, ncol(industry_names), 3)]
+colnames(industry_names) = industry_names[10, ]
 
-names = lapply(names[1, ], function(x) sub("\\s+$", "", stringr::str_extract(x, "[^;]*")))
+industry_names = lapply(industry_names[1, ], function(x) sub("\\s+$", "", stringr::str_extract(x, "[^;]*")))
+```
+
+## Plots
+
+Colour palette
+
+```{r}
+colourCount = length(unique(table4_long$Industry))
+getPalette = colorRampPalette(brewer.pal(9, "Set1"))
+```
+
+
+
+Plot the employment rates
+
+
+
+```{r}
+table4 %>%
+  filter(Quarter > as.POSIXct("2018-02-01")) %>%
+  ggplot(aes(x = Quarter, y = A84932399X)) +
+  geom_point()+
+  geom_line() +
+  labs(title = industry_names["A84932399X"])
+```
+
+
+
+
+```{r}
+table4_long %>%
+  filter(Quarter > as.POSIXct("2018-02-01")) %>%
+  filter(Industry != "A84932399X") %>%
+  ggplot(aes(x = Quarter, y = Employment, colour = Industry)) +
+  geom_point()+
+  geom_line()+
+  scale_color_manual(values = getPalette(colourCount), labels = industry_names)
+```
+
+Can see "Accommodation and Food Services" have taken a big hit.
+
+```{r}
+table4 %>%
+  filter(Quarter > as.POSIXct("2018-02-01")) %>%
+  ggplot(aes(x = Quarter, y = A84090248T)) +
+  geom_point()+
+  geom_line() +
+  labs(title = industry_names["A84090248T"])
 ```
 
 
