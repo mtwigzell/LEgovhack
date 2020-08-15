@@ -1,0 +1,40 @@
+---
+title: "Industry EDA"
+author: "Marc Wigzell"
+date: "15 August 2020"
+output: html_document
+---
+
+Packages
+```{r}
+library(data.table)
+```
+
+Data
+```{r}
+dt = fread("../data/industry_incomes.csv")
+```
+
+Data cleaning
+```{r}
+# Subset to variables of interest
+industry = dt[, .(
+  `Broad Industry1`,
+  `Number of individuals`,
+  `Taxable income or loss3
+  no.`,
+  `Taxable income or loss3$`
+  )]
+# Rename columns
+  setnames(industry,
+  c(
+  "Broad Industry1",
+  "Taxable income or loss3
+  no.",
+  "Taxable income or loss3
+  $"
+  ),
+  c("Indutry",
+    "")
+```
+

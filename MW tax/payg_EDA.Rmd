@@ -1,0 +1,145 @@
+---
+title: "PAYG EDA"
+author: "Marc Wigzell"
+date: "15 August 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+Packages
+```{r}
+library(data.table)
+library(plyr)
+library(ggplot2)
+library(dplyr)
+library(magrittr)
+#library(tidyverse)
+```
+
+Read in PAYG withholding data
+```{r}
+payg = fread("../data/payg_installments.csv")
+```
+
+Data cleaning
+```{r}
+# fix years
+old = unique(payg$Year2)
+new = 2011:2019
+payg[, fy := mapvalues(Year2, old, new)]
+payg[, Year2 := NULL]
+# industry
+payg[, industry := substr(`Broad Industry1`, 1, 1)]
+setnames(payg, "Broad Industry1", "industry_name")
+# $
+payg[, installments := as.numeric(gsub(",", "", `PAYGI$`))]
+payg[, `PAYGI$` := NULL]
+# entity type
+setnames(payg, "Entity Type", "entity")
+# clients
+setnames(payg, "Number of clients", "clients")
+payg[, clients := as.numeric(gsub(",", "", clients))]
+```
+
+Exploratory data analysis: entities
+```{r}
+table(payg$entity)
+```
+
+EDA: clients
+```{r}
+summary(payg$clients)
+```
+
+EDA: financial years
+```{r}
+table(payg$fy)
+```
+
+EDA: industries
+```{r}
+table(payg$industry)
+```
+
+EDA: dollars installments
+```{r}
+summary(payg$installments)
+```
+
+Create average dollars by clients
+```{r}
+payg[, i_c := installments/clients]
+summary(payg$i_c)
+```
+
+Examine avereage installments per client per company by FY and industry
+```{r}
+ts_ = payg[, .(mean_i_c = mean(i_c)), by = .(entity, industry, fy, industry_name)]
+individuals = ts_[entity == "Individuals", .(mean_i_c, industry, fy, industry_name)]
+individuals[, fy := as.numeric(fy)]
+mean_all_years = individuals[, .(mean_ = mean(mean_i_c)), by = .(industry, industry_name)]
+setorder(mean_all_years,-mean_)
+individuals[, industry := factor(industry, levels = unique(mean_all_years$industry))]
+# plot
+ggplot(data = individuals, aes(x = fy, y = log(mean_i_c))) +
+  geom_line(aes(color = industry)) +
+  scale_x_discrete(name = "End of financial year", limits = c(2011:2019)) +
+  scale_y_continuous(name = "Mean installments per client") +
+  ggtitle(label = "Log Mean installments per client over time by industry for individuals")
+# Industry table
+mean_all_years[, .(industry, industry_name)]
+```
+
+Examine avereage installments per client per company by FY and industry
+```{r}
+ts_ = payg[, .(mean_i_c = mean(i_c)), by = .(entity, industry, fy, industry_name)]
+individuals = ts_[entity == "Companies", .(mean_i_c, industry, fy, industry_name)]
+individuals[, fy := as.numeric(fy)]
+mean_all_years = individuals[, .(mean_ = mean(mean_i_c)), by = .(industry, industry_name)]
+setorder(mean_all_years,-mean_)
+individuals[, industry := factor(industry, levels = unique(mean_all_years$industry))]
+# plot
+ggplot(data = individuals, aes(x = fy, y = log(mean_i_c))) +
+  geom_line(aes(color = industry)) +
+  scale_x_discrete(name = "End of financial year", limits = c(2011:2019)) +
+  scale_y_continuous(name = "Mean installments per client") +
+  ggtitle(label = "log(Mean installments per client) over time by industry for companies")
+# Industry table
+mean_all_years[, .(industry, industry_name)]
+```
+
+Examine avereage installments per client per company by FY and industry
+```{r}
+ts_ = payg[entity %in% c("Companies", "Individuals"), .(mean_i_c = mean(i_c)), by = .(industry, fy, industry_name)]
+individuals = ts_[, .(mean_i_c, industry, fy, industry_name)]
+individuals[, fy := as.numeric(fy)]
+mean_all_years = individuals[, .(mean_ = mean(mean_i_c)), by = .(industry, industry_name)]
+setorder(mean_all_years,-mean_)
+individuals[, industry := factor(industry, levels = unique(mean_all_years$industry))]
+# plot
+ggplot(data = individuals, aes(x = fy, y = log(mean_i_c))) +
+  geom_line(aes(color = industry)) +
+  scale_x_discrete(name = "End of financial year", limits = c(2011:2019)) +
+  scale_y_continuous(name = "Mean installments per client") +
+  ggtitle(label = "log(Mean installments per client) over time by industry for \n companies + individuals")
+# Industry table
+mean_all_years[, .(industry, industry_name)]
+```
+
+
+Based off apriori the industries that are suffering from C19: <br/>
+* G. Retail Trade <br/>
+* I. Transport, Postal, Warehousing <br/>
+* H. Accommodation and Food Services <br/>
+* Q. Health Care and Social Assistance <br/>
+* P. Education and Training <br/>
+* O. Public Administration and Safety <br/>
+
+Zoom into 2018/19 FY and observe distribution of industries for companies + individuals
+```{r}
+
+```
+
