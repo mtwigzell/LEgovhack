@@ -1,0 +1,37 @@
+---
+title: "Exploring Industries"
+author: "Elena Tartaglia"
+date: "15 August 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+*Challenge: How can we help identify and assist people in industries most affected by COVID-19?*
+
+```{r}
+table4 = readxl::read_excel(here::here("data", "6291004.xls"),
+                            sheet = "Data1",
+                            col_names = TRUE,
+                            skip = 9)
+# take every third column because that contains original counts
+table4 = table4[, seq(1, ncol(table4), 3)]
+```
+
+Make a table of industry names 
+
+```{r}
+names = readxl::read_excel(here::here("data", "6291004.xls"),
+                            sheet = "Data1",
+                            col_names = paste0("C", 1:61),
+                            n_max = 10)
+names = names[, seq(1, ncol(names), 3)]
+colnames(names) = names[10, ]
+
+names = lapply(names[1, ], function(x) sub("\\s+$", "", stringr::str_extract(x, "[^;]*")))
+```
+
+
+
