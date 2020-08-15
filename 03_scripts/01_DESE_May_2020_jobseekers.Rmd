@@ -1,0 +1,51 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r, echo = TRUE, message = FALSE, warning = FALSE}  
+#-----load required packages-----  
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse,
+               here,
+               readxl,
+               janitor) # for lemmatisation and stemming    
+```
+
+# Dataset background  
+
+## 2020-05_DESE_jobseekers.xlsx  
+
+JSCI data contains those in jobactive, new employment services trial, online employment services and online employment services trial at 31 May 2020 who have a valid JSCI and address as at 30 July 2020.
+
+Sheets of interest:
++ 31 May JSCI Demographics by ADII region (Australian Digital Inclusion Index)   
++ What have you MOSTLY been doing for the last two years?  
++ In your most recent job, how many hours did you mostly work per week?  
++ JSCI Demographics by LGA  
+
+```{r}
+#-----load May 2020 job seeker data-----
+jsci_all_raw_data <- read_excel(here("01_raw_data", "2020-05_DESE_jobseekers.xlsx"),
+                            sheet = "JSCI demograhpics - ADII region", 
+                            skip = 2) 
+
+jsci_work_raw_data <- read_excel(here("01_raw_data", "2020-05_DESE_jobseekers.xlsx"),
+                            sheet = "Q2 mostly doing - ADII region", 
+                            skip = 2)
+
+jsci_hours_data <- read_excel(here("01_raw_data", "2020-05_DESE_jobseekers.xlsx"),
+                            sheet = "Q3 hours worked - ADII region", 
+                            skip = 2)
+
+jsci_lga_raw_data <- read_excel(here("01_raw_data", "2020-05_DESE_jobseekers.xlsx"),
+                            sheet = "JSCI demographics - LGA", 
+                            skip = 2)
+```
+
+
+## 2020-05_DESE_jobseekers.xlsx    
+```{r}
+
+```
+
