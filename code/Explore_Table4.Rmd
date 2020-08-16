@@ -3,6 +3,7 @@ title: "Impact to Industries by COVID-19"
 author: "Elena Tartaglia"
 date: "15 August 2020"
 output: github_document
+df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -140,6 +141,8 @@ table4 %>%
   theme(axis.text.x = element_text(angle=20)) 
 ```
 
+## Since 2010 {.tabset}
+
 Comparison across all industries since 2010. The employment figures for 2020 are in red.
 
 
@@ -150,11 +153,21 @@ ggplot(employment_since_2010, aes(x = Quarter2, y = Employment, group = factor(Y
   geom_line(data=subset(employment_since_2010, Year == "2020"), colour="red") +
   geom_point(data=subset(employment_since_2010, Year == "2020"), colour="red") +
   #labs(title = industry_names[Industry]) +
-  facet_wrap(.~broad_name,
+  facet_wrap(.~broad_code,
              scales = "free_y") +
   labs(title = "Employment since 2010",
-       x = "Quarter", y = "Number Employed (1000 people)")
+       x = "Quarter", y = "Number Employed (1000 people)")+
+  theme(axis.text.x = element_text(angle=90)) 
+```
+
+```{r}
+industry_codes
 ```
 
 
 
+
+
+# Data Citation
+
+[Table 4: Employed persons by Industry division of main job (ANZSIC) ](https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/latest-release#data-download)
