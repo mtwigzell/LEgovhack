@@ -1,22 +1,22 @@
-broad,tax_num,avg_tax_incm
-"A. Agriculture, Forestry and Fishing",67443,66372.9239505953
-B. Mining,1019,78216.6368989205
-C. Manufacturing,45702,44362.9994967398
-"D. Electricity, Gas, Water and Waste Services",1833,48174.0267321331
-E. Construction,224003,48244.2749829243
-F. Wholesale Trade,11979,48099.2757325319
-G. Retail Trade,63845,45604.6371054899
-H. Accommodation and Food Services,21518,35574.0441955572
-"I. Transport, Postal and Warehousing",139549,37721.8698664985
-J. Information Media and Telecommunications,20419,50141.0520593565
-K. Financial and Insurance Services,25813,82905.490179367
-"L. Rental, Hiring and Real Estate Services",25170,67069.6229638459
-"M. Professional, Scientific and Technical Services",187646,73564.0952325123
-N. Administrative and Support Services,109573,35138.28444051
-O. Public Administration and Safety,4684,50266.4325362938
-P. Education and Training,47397,47063.2881195012
-Q. Health Care and Social Assistance,132217,127696.879531376
-R. Arts and Recreation Services,80152,48919.9154481485
-S. Other Services,111477,38648.3180386986
-X. Other individuals,12768530,62299.7460445329
-Z. Other,33599,63219.687371648
+tax_num,avg_tax_incm,broad_code,broad_name
+67443,66372.9239505953,A,"Agriculture, Forestry and Fishing"
+1019,78216.6368989205,B,Mining
+45702,44362.9994967398,C,Manufacturing
+1833,48174.0267321331,D,"Electricity, Gas, Water and Waste Services"
+224003,48244.2749829243,E,Construction
+11979,48099.2757325319,F,Wholesale Trade
+63845,45604.6371054899,G,Retail Trade
+21518,35574.0441955572,H,Accommodation and Food Services
+139549,37721.8698664985,I,"Transport, Postal and Warehousing"
+20419,50141.0520593565,J,Information Media and Telecommunications
+25813,82905.490179367,K,Financial and Insurance Services
+25170,67069.6229638459,L,"Rental, Hiring and Real Estate Services"
+187646,73564.0952325123,M,"Professional, Scientific and Technical Services"
+109573,35138.28444051,N,Administrative and Support Services
+4684,50266.4325362938,O,Public Administration and Safety
+47397,47063.2881195012,P,Education and Training
+132217,127696.879531376,Q,Health Care and Social Assistance
+80152,48919.9154481485,R,Arts and Recreation Services
+111477,38648.3180386986,S,Other Services
+12768530,62299.7460445329,X,Other individuals
+33599,63219.687371648,Z,Other

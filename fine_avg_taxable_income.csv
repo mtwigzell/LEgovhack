@@ -1,537 +1,537 @@
-tax_num,fine,avg_tax_incm
-569,01110 Nursery Production (Under Cover),48641.6203866432
-640,01120 Nursery Production (Outdoors),52478.578125
-166,01130 Turf Growing,50447.7530120482
-65,01140 Floriculture Production (Under Cover),41558.1076923077
-187,01150 Floriculture Production (Outdoors),55315.9251336898
-59,01210 Mushroom Growing,42842.3898305085
-471,01220 Vegetable Growing (Under Cover),31621.9341825902
-1217,01230 Vegetable Growing (Outdoors),43312.3040262942
-1480,01310 Grape Growing,107165.742567568
-5,01320 Kiwifruit Growing,53656.6
-108,01330 Berry Fruit Growing,45841.4444444445
-70,01340 Apple and Pear Growing,27993.1714285714
-130,01350 Stone Fruit Growing,83578.8153846154
-239,01360 Citrus Fruit Growing,58942.3891213389
-421,01370 Olive Growing,122509.377672209
-1464,01390 Other Fruit and Tree Nut Growing,120318.116120219
-3471,01410 Sheep Farming (Specialised),57852.9227888217
-20013,01420 Beef Cattle Farming (Specialised),62345.1958726828
-53,01430 Beef Cattle Feedlots (Specialised),93730.4716981132
-6248,01440 Sheep-Beef Cattle Farming,69637.6755761844
-3461,01450 Grain-Sheep or Grain-Beef Cattle Farming,51759.6200520081
-69,01460 Rice Growing,34145.7971014493
-2091,01490 Other Grain Growing,57158.468675275
-742,01510 Sugar Cane Growing,52870.0175202156
-38,01520 Cotton Growing,55357.4736842105
-831,01590 Other Crop Growing n.e.c.,70200.8086642599
-1353,01600 Dairy Cattle Farming,38538.8573540281
-98,01710 Poultry Farming (Meat),65319.193877551
-152,01720 Poultry Farming (Eggs),34272.875
-22,01800 Deer Farming,77316.9545454546
-1676,01910 Horse Farming,60191.1837708831
-146,01920 Pig Farming,33352.698630137
-717,01930 Beekeeping,53165.3974895398
-1959,01990 Other Livestock Farming n.e.c.,65183.2368555385
-102,02011 Oyster Farming,52705.1176470588
-11,02019 Offshore Longline and Rack Aquaculture n.e.c.,50071.5454545455
-7,02031 Lobster Farming or Breeding,58979.5714285714
-80,02039 Other Onshore Aquaculture,56747.2875
-2793,03010 Forestry,185236.861439313
-1050,03020 Logging,62418.5361904762
-368,04111 Rock Lobster Fishing,85591.4320652174
-59,04112 Crab Potting,51217.0338983051
-196,04120 Prawn Fishing,53094.3367346939
-418,04130 Line Fishing,43828.9641148325
-158,"04140 Fish Trawling, Seining and Netting",44508.2405063291
-239,04191 Abalone Fishing,86366.0962343096
-621,04192 Marine Fishing n.e.c.,51631.3929146538
-273,04199 Other Fishing n.e.c.,48700.4725274725
-607,04200 Hunting and Trapping,54172.5980230643
-967,05100 Forestry Support Services,130337.677352637
-611,05220 Shearing Services,48979.0114566285
-8452,05290 Other Agriculture and Fishing Support Services,42583.6192617132
-66,07000 Oil and Gas Extraction,81443.2424242424
-5,08030 Copper Ore Mining,92858.2
-52,08040 Gold Ore Mining,54857.4230769231
-7,08050 Mineral Sand Mining,83112.4285714286
-7,08090 Other Metal Ore Mining,38931.2857142857
-69,09110 Gravel and Sand Quarrying,86482.8115942029
-154,09190 Other Construction Material Mining,53206.6623376623
-88,09902 Opal Mining,32603.25
-11,09903 Gemstone Mining (Except Opals and Diamonds),50877.5454545455
-34,09909 Other Non-Metallic Mineral Mining and Quarrying n.e.c.,98345.5294117647
-6,10112 Petroleum Exploration Services,70800.6666666667
-34,10121 Mineral Exploration (Own Account),12336.8823529412
-85,10122 Mineral Exploration Services,71390.7294117647
-401,10900 Other Mining Support Services,105511.768079801
-208,11110 Meat Processing,34696.8557692308
-106,11120 Poultry Processing,33036.6226415094
-5,11130 Cured Meat and Smallgoods Manufacturing,43924.2
-14,11200 Seafood Processing,40096.0714285714
-12,11310 Milk and Cream Processing,28630.5833333333
-21,11320 Ice Cream Manufacturing,46876.9523809524
-43,11330 Cheese and Other Dairy Product Manufacturing,39441.9302325581
-343,11400 Fruit and Vegetable Processing,48603.1457725948
-55,11500 Oil and Fat Manufacturing,40462.6
-38,"11620 Cereal, Pasta and Baking Mix Manufacturing",32210.5
-127,11710 Bread Manufacturing (Factory based),39592.3070866142
-644,11720 Cake and Pastry Manufacturing (Factory based),34223.2267080745
-13,11730 Biscuit Manufacturing (Factory based),40660.6923076923
-1342,11740 Bakery Product Manufacturing (Non-factory based),33559.7563338301
-160,11820 Confectionery Manufacturing,34813.68125
-5,"11910 Potato, Corn and Other Crisp Manufacturing",31855.2
-73,11920 Prepared Animal and Bird Feed Manufacturing,44656.4520547945
-1050,11990 Other Food Product Manufacturing n.e.c.,39729.380952381
-79,"12110 Soft Drink, Cordial and Syrup Manufacturing",45254.5696202532
-60,12120 Beer Manufacturing,68516.6333333333
-5,12130 Spirit Manufacturing,13614.2
-405,12140 Wine and Other Alcoholic Beverage Manufacturing,68744.9703703704
-44,13120 Natural Textile Manufacturing,25613.6363636364
-13,13130 Synthetic Textile Manufacturing,41227.5384615385
-346,"13200 Leather Tanning, Fur Dressing and Leather Product Manufacturing",37751.5924855491
-61,13310 Textile Floor Covering Manufacturing,39551.1803278689
-15,"13320 Rope, Cordage and Twine Manufacturing",43546
-1233,13330 Cut and Sewn Textile Product Manufacturing,32700.2887266829
-634,13340 Textile Finishing and Other Textile Product Manufacturing,34192.2902208202
-85,13400 Knitted Product Manufacturing,27578.6705882353
-4159,13510 Clothing Manufacturing,32895.057465737
-74,13520 Footwear Manufacturing,31792.5540540541
-128,14110 Log Sawmilling,38477.5078125
-69,14120 Wood Chipping,37895.1449275362
-276,14130 Timber Resawing and Dressing,41945.8768115942
-32,14910 Prefabricated Wooden Building Manufacturing,46202.375
-4249,14920 Wooden Structural Fitting and Component Manufacturing,49733.9453989174
-5,14940 Reconstituted Wood Product Manufacturing,27271
-583,14990 Other Wood Product Manufacturing n.e.c.,38469.538593482
-11,"15100 Pulp, Paper and Paperboard Manufacturing",30860.5454545455
-138,15230 Paper Stationery Manufacturing,38043.5507246377
-23,15290 Other Converted Paper Product Manufacturing,30347.2608695652
-1376,16110 Printing,42252.179505814
-1467,16120 Printing Support Services,44786.2317655078
-846,16200 Reproduction of Recorded Media,59379.6749408983
-7,17090 Other Petroleum and Coal Product Manufacturing,100901.428571429
-27,18120 Basic Organic Chemical Manufacturing,29036.3703703704
-16,18290 Other Basic Polymer Manufacturing,52104.4375
-13,18310 Fertiliser Manufacturing,32506.8461538462
-87,18410 Human Pharmaceutical and Medicinal Product Manufacturing,79740.2643678161
-6,18420 Veterinary Pharmaceutical and Medicinal Product Manufacturing,92502.3333333333
-1344,18510 Cleaning Compound Manufacturing,32413.0677083333
-425,18520 Cosmetic and Toiletry Preparation Manufacturing,36133
-71,18910 Photographic Chemical Product Manufacturing,40533.323943662
-12,18920 Explosive Manufacturing,79238.3333333333
-25,18990 Other Basic Chemical Product Manufacturing n.e.c.,45408.76
-5,19110 Polymer Film and Sheet Packaging Material Manufacturing,34712.8
-49,19120 Rigid and Semi-Rigid Polymer Product Manufacturing,58692.8979591837
-4,19130 Polymer Foam Product Manufacturing,20809.5
-52,19140 Tyre Manufacturing,38463.8653846154
-137,19160 Paint and Coatings Manufacturing,37062.9562043796
-89,19190 Other Polymer Product Manufacturing,39925.7528089888
-6,19200 Natural Rubber Product Manufacturing,63302.6666666667
-392,20100 Glass and Glass Product Manufacturing,42028.7831632653
-7,20210 Clay Brick Manufacturing,29510.2857142857
-636,20290 Other Ceramic Product Manufacturing,39837.5
-44,20310 Cement and Lime Manufacturing,29421.0227272727
-173,20320 Plaster Product Manufacturing,41895.4739884393
-334,20330 Ready-Mixed Concrete Manufacturing,53365.0838323353
-373,20340 Concrete Product Manufacturing,46688.0884718499
-293,20900 Other Non-Metallic Mineral Product Manufacturing,49136.5802047782
-143,21100 Iron Smelting and Steel Manufacturing,56173.3846153846
-84,21210 Iron and Steel Casting,37281.4523809524
-35,21220 Steel Pipe and Tube Manufacturing,47685.7142857143
-10,21320 Aluminium Smelting,37507.6
-38,21390 Other Basic Non-Ferrous Metal Manufacturing,54638.7894736842
-7,21410 Non-Ferrous Metal Casting,62338.4285714286
-36,"21420 Aluminium Rolling, Drawing, Extruding",40764.6666666667
-46,21490 Other Basic Non-Ferrous Metal Product Manufacturing,57101.347826087
-40,22100 Iron and Steel Forging,39739.65
-732,22210 Structural Steel Fabricating,53104
-247,22220 Prefabricated Metal Building Manufacturing,48442.4898785425
-268,22230 Architectural Aluminium Product Manufacturing,48109.4141791045
-32,22240 Metal Roof and Guttering Manufacturing (except Aluminium),41278.5
-369,22290 Other Structural Metal Product Manufacturing,50970.5691056911
-934,"22310 Boiler, Tank and Other Heavy Gauge Metal Container Manufacturing",64353.9571734475
-30,22390 Other Metal Container Manufacturing,49532.8
-381,22400 Sheet Metal Product Manufacturing (except Metal Structural and Container Products),56849.0157480315
-28,22910 Spring and Wire Product Manufacturing,37772.7857142857
-541,22930 Metal Coating and Finishing,47872.0979667283
-3190,22990 Other Fabricated Metal Product Manufacturing n.e.c.,53772.5880877743
-117,23110 Motor Vehicle Manufacturing,38796.5213675214
-373,23120 Motor Vehicle Body and Trailer Manufacturing,41825.6112600536
-72,23130 Automotive Electrical Component Manufacturing,49965.0138888889
-175,23190 Other Motor Vehicle Parts Manufacturing,46329.6171428571
-163,23910 Shipbuilding and Repair Services,50116.7116564417
-1008,23920 Boatbuilding and Repair Services,42905.9067460318
-14,23930 Railway Rolling Stock Manufacturing and Repair Services,46985.5714285714
-374,23940 Aircraft Manufacturing and Repair Services,70611.9598930481
-166,23990 Other Transport Equipment Manufacturing n.e.c.,43113.5301204819
-59,"24110 Photographic, Optical and Ophthalmic Equipment Manufacturing",61372.2372881356
-456,24120 Medical and Surgical Equipment Manufacturing,66353.9890350877
-181,24190 Other Professional and Scientific Equipment Manufacturing,44757.3591160221
-202,24211 Computer and Related Equipment Manufacturing,56102.9801980198
-66,24219 Business Machine (Electronic) Manufacturing n.e.c.,49211.1515151515
-87,24220 Communication Equipment Manufacturing,60533.4597701149
-139,24290 Other Electronic Equipment Manufacturing,53167.035971223
-129,24310 Electric Cable and Wire Manufacturing,48433.8217054264
-128,24320 Electric Lighting Equipment Manufacturing,50188.328125
-199,24390 Other Electrical Equipment Manufacturing,54527.648241206
-37,24410 Whiteware Appliance Manufacturing,44956.5405405405
-156,24490 Other Domestic Appliance Manufacturing,32244.6153846154
-7,24510 Pump and Compressor Manufacturing,44289.5714285714
-108,"24520 Fixed Space Heating, Cooling and Ventilation Equipment Manufacturing",49006.3518518519
-119,24610 Agricultural Machinery and Equipment Manufacturing,51742.3025210084
-63,24620 Mining and Construction Machinery Manufacturing,60193.1111111111
-306,24630 Machine Tool and Parts Manufacturing,54118.0098039216
-265,24690 Other Specialised Machinery and Equipment Manufacturing,39468.8490566038
-41,24910 Lifting and Material Handling Equipment Manufacturing,51721.8048780488
-203,24990 Other Machinery and Equipment Manufacturing n.e.c.,53565.354679803
-3276,25110 Wooden Furniture and Upholstered Seat Manufacturing,44835.1233211233
-64,25120 Metal Furniture Manufacturing,45165.328125
-10,25130 Mattress Manufacturing,34397.5
-596,25190 Other Furniture Manufacturing,38343.5654362416
-2237,25910 Jewellery and Silverware Manufacturing,39283.9879302638
-624,"25920 Toy, Sporting and Recreational Product Manufacturing",42019.4471153846
-989,25990 Other Manufacturing n.e.c.,43213.8281092012
-79,26190 Other Electricity Generation,77200.1139240506
-13,26200 Electricity Transmission,48406.0769230769
-35,26300 Electricity Distribution,63544.3142857143
-162,26400 On Selling Electricity and Electricity Market Operation,39740.3209876543
-29,27000 Gas Supply,59392.8620689655
-206,28110 Water Supply,55990.5145631068
-91,28120 Sewerage and Drainage Services,54893.8901098901
-359,29110 Solid Waste Collection Services,46343.8189415042
-214,29190 Other Waste Collection Services,46133.7476635514
-265,29210 Waste Treatment and Disposal Services,44527.2603773585
-380,29220 Waste Remediation and Materials Recovery Services,43029.8947368421
-11518,30110 House Construction,51466.2432714013
-6787,30190 Other Residential Building Construction,51083.4999263298
-2280,30200 Non-Residential Building Construction,59850.5219298246
-381,31010 Road and Bridge Construction,61484.6509186352
-518,31091 Swimming and Spa Pool Construction or Installation (Below Ground Concrete or Fibreglass),51365.3281853282
-1250,31099 Other Heavy and Civil Engineering Construction n.e.c.,59399.9136
-593,32110 Land Development and Subdivision,142895.212478921
-3608,32120 Site Preparation Services,50327.4886363636
-7923,32210 Concreting Services,49027.1177584248
-10164,32220 Bricklaying Services,44358.1608618654
-3513,32230 Roofing Services,49656.4323939653
-1304,32240 Structural Steel Erection Services,51135.5007668712
-13000,32310 Plumbing Services,55574.8431538462
-18965,32320 Electrical Services,61080.2781439494
-3121,32330 Air Conditioning and Heating Services,55725.761614867
-1149,32340 Fire and Security Alarm Installation Services,54144.2062663185
-4178,32390 Other Building Installation Services,49011.1287697463
-12775,32410 Plastering and Ceiling Services,43251.4832093933
-36870,32420 Carpentry Services,49559.5911310008
-15777,32430 Tiling and Carpeting Services,43387.6358623312
-28484,32440 Painting and Decorating Services,40286.8425431821
-1445,32450 Glazing Services,52452.7079584775
-11565,32910 Landscape Construction Services,43236.7276264591
-2720,32920 Hire of Construction Machinery with Operator,58187.1169117647
-24115,32990 Other Construction Services n.e.c.,41143.4580136844
-24,33110 Wool Wholesaling,58238.7916666667
-22,33120 Cereal Grain Wholesaling,55962.3181818182
-1221,33190 Other Agricultural Product Wholesaling,60468.7256347256
-29,33210 Petroleum Product Wholesaling,49777.2068965517
-716,33221 Metal Waste and Scrap Wholesaling,39764.3575418994
-32,33229 Other Metal and Mineral Wholesaling,55988.25
-223,33230 Industrial and Agricultural Chemical Product Wholesaling,46115.2242152466
-180,33310 Timber Wholesaling,51865.9444444445
-181,33320 Plumbing Goods Wholesaling,50656.9834254144
-479,33390 Other Hardware Goods Wholesaling,46444.6012526096
-37,34110 Agricultural and Construction Machinery Wholesaling,60277.8918918919
-203,34190 Other Specialised Industrial Machinery and Equipment Wholesaling,55035.4679802956
-126,34910 Professional and Scientific Goods Wholesaling,66713.6031746032
-119,34920 Computer and Computer Peripheral Wholesaling,55220.9831932773
-86,34930 Telecommunication Goods Wholesaling,46419.7325581395
-503,34940 Other Electrical and Electronic Goods Wholesaling,50151.8051689861
-240,34990 Other Machinery and Equipment Wholesaling n.e.c.,50472.4541666667
-190,35010 Car Wholesaling,58671.9421052632
-31,35020 Commercial Vehicle Wholesaling,62160.2903225806
-36,35030 Trailer and Other Motor Vehicle Wholesaling,54469.4722222222
-397,35040 Motor Vehicle New Parts Wholesaling,46992.3299748111
-360,35050 Motor Vehicle Dismantling and Used Parts Wholesaling,40825.0388888889
-31,36010 General Line Grocery Wholesaling,37686.7741935484
-181,"36020 Meat, Poultry and Smallgoods Wholesaling",45327.0497237569
-41,36030 Dairy Produce Wholesaling,40773.9268292683
-114,36040 Fish and Seafood Wholesaling,43095.8421052632
-345,36050 Fruit and Vegetable Wholesaling,40189.5188405797
-97,36061 Liquor Wholesaling,50464.3505154639
-40,36062 Tobacco Product Wholesaling,50990.5
-741,36090 Other Grocery Wholesaling,43630.8893387314
-169,37110 Textile Product Wholesaling,37241.9349112426
-542,37120 Clothing and Footwear Wholesaling,48443.7601476015
-222,37200 Pharmaceutical and Toiletry Goods Wholesaling,56574.5225225225
-116,37310 Furniture and Floor Covering Wholesaling,42107.5862068966
-316,37320 Jewellery and Watch Wholesaling,42035.8987341772
-269,37330 Kitchen and Diningware Wholesaling,44770.1524163569
-231,37340 Toy and Sporting Goods Wholesaling,51004.0303030303
-108,37350 Book and Magazine Wholesaling,48272.1851851852
-95,37360 Paper Product Wholesaling,38594.0842105263
-1863,37390 Other Goods Wholesaling n.e.c.,46549.9871175523
-1023,38000 Commission-Based Wholesaling,46026.4555229717
-1031,39110 Car Retailing,38923.7934044617
-168,39120 Motor Cycle Retailing,46071.9285714286
-166,39130 Trailer and Other Motor Vehicle Retailing,45743.0602409639
-69,39211 Motor Vehicle Battery Retailing,48680.463768116
-548,39219 Motor Vehicle Parts Retailing n.e.c.,47496.7098540146
-184,39220 Tyre Retailing,45444.2336956522
-183,40000 Fuel Retailing,58226.1639344262
-1017,41100 Supermarket and Grocery Stores,32250.0294985251
-519,41211 Meat Retailing (Except Poultry or Canned Meat),43325.1464354528
-142,41212 Fresh Fish Retailing,36106.3309859155
-19,41213 Fresh Poultry Retailing,33123.7894736842
-629,41220 Fruit and Vegetable Retailing,36896.0349761526
-223,41230 Liquor Retailing,49686.865470852
-4051,41290 Other Specialised Food Retailing,37712.6768699087
-701,42110 Furniture Retailing,35577.5106990014
-452,42120 Floor Coverings Retailing,45316.0597345133
-1225,42130 Houseware Retailing,36586.4653061225
-1029,42140 Manchester and Other Textile Goods Retailing,37702.4246841594
-2062,"42210 Electrical, Electronic and Gas Appliance Retailing",46630.8128031038
-975,42220 Computer and Computer Peripheral Retailing,43460.4492307692
-451,42290 Other Electrical and Electronic Goods Retailing,43688.4767184035
-495,42310 Hardware and Building Supplies Retailing,42382.8686868687
-800,42320 Garden Supplies Retailing,40833.335
-1063,42410 Sport and Camping Equipment Retailing,46861.8889934149
-769,42420 Entertainment Media Retailing,46381.821846554
-1108,42430 Toy and Game Retailing,41525.1868231047
-275,42441 Newsagents,32720.0872727273
-560,42442 Book Retailing,44461.9285714286
-228,42450 Marine Equipment Retailing,50867.3333333333
-7734,42510 Clothing Retailing,39024.5777088182
-359,42520 Footwear Retailing,39788.356545961
-818,42530 Watch and Jewellery Retailing,36958.8740831296
-1205,42590 Other Personal Accessory Retailing,36937.8970954357
-14,42600 Department Stores,39955.2142857143
-2496,42711 Chemist or Pharmacy Operations,177992.639022436
-818,"42712 Cosmetics, Perfumes and Toiletry Goods Retailing (Except Direct Marketing) n.e.c.",43923.1687041565
-541,42720 Stationery Goods Retailing,42855.7282809612
-35,42731 Pawnbroking,59351.6285714286
-737,42732 Antiques Retailing (Except Pawnbroking or Disposal Stores),32470.8656716418
-992,42733 Disposal Stores (Second Hand Goods Retailing Except Pawnbroking and Antiques),31743.5574596774
-2450,42740 Flower Retailing,34884.5555102041
-203,42791 Swimming Pool and Spa Retailing,46215.6650246306
-987,42792 Art Dealers (Including Retail Art Gallery Operation Except by Direct Marketing),41406.3890577508
-100,42793 Adult Sex Shop Operation,46961.72
-1002,42794 Pets Retailing,34348.745508982
-7189,42799 Other Store-Based Retailing n.e.c.,37702.7016274864
-1790,"43101 Cosmetics, Perfumes and Toiletry Goods Retailing by Direct Marketing (Except Commission Based)",46277.4899441341
-1242,43102 Jewellery Retailing by Direct Marketing (Except Commission Based),40492.9371980676
-6420,43109 Non-Store Retailing n.e.c.,41849.041588785
-1053,"43201 Cosmetics, Perfumes and Toiletry Goods Retailing Commission Based",44181.7701804369
-140,43202 Jewellery Retailing Commission Based,39263.4642857143
-4378,43209 Retail Commission-Based Buying and/or Selling n.e.c.,43348.3391959799
-3967,44000 Accommodation,48559.5276027225
-6645,45110 Cafes and Restaurants,30411.7984951091
-6478,45120 Takeaway Food Services,30827.38036431
-3959,45130 Catering Services,38940.3793887345
-307,"45200 Pubs, Taverns and Bars",36195.3778501629
-90,45301 Licensed Clubs (Hospitality) Operation,35120.8444444445
-72,45302 Unlicensed Clubs (Hospitality) Operation,36425.6527777778
-16920,46100 Road Freight Transport,38501.9669030733
-333,46210 Interurban and Rural Bus Transport,42797.5345345345
-802,46220 Urban Bus Transport (Including Tramway),44996.0211970075
-23283,46231 Taxi Service Operation,39654.8798694326
-14060,46239 Other Road Transport (Except Taxi),41913.5919630157
-10,47100 Rail Freight Transport,98954.2
-178,48100 Water Freight Transport,107830.556179775
-250,48200 Water Passenger Transport,66558.056
-216,49001 Aircraft Charter and Lease,96336.212962963
-32,49009 Other Air and Space Transport,65132.40625
-540,50100 Scenic and Sightseeing Transport,53515.3462962963
-3616,50290 Other Transport n.e.c.,41446.9452433628
-1071,51010 Postal Services,40436.7703081233
-21155,51020 Courier Pick-up and Delivery Services,33319.9110848499
-23,52110 Stevedoring Services,46907.2608695652
-25,52120 Port and Water Transport Terminal Operations,63430.48
-519,52190 Other Water Transport Support Services,58190.140655106
-317,52200 Airport Operations and Other Air Transport Support Services,76390.1514195584
-160,52910 Customs Agency Services,50342.93125
-263,52920 Freight Forwarding Services,46945.8403041825
-53385,52991 Taxi Driver,35137.3665449096
-1882,52999 Other Transport Support Services n.e.c.,41854.6896918172
-12,53010 Grain Storage Services,360817.75
-497,53090 Other Warehousing and Storage Services,53520.9597585513
-200,54110 Newspaper Publishing,55700.15
-299,54120 Magazine and Other Periodical Publishing,52416.3578595318
-1422,54130 Book Publishing,56295.85302391
-18,54140 Directory and Mailing List Publishing,36756.6666666667
-268,"54190 Other Publishing (except Software, Music and Internet)",48414.8917910448
-1143,54200 Software Publishing,78955.2720909886
-6172,55110 Motion Picture and Video Production,55249.444426442
-104,55120 Motion Picture and Video Distribution,50115.5865384615
-42,55130 Motion Picture Exhibition,55847.2380952381
-704,55140 Post-production Services and Other Motion Picture and Video Activities,-89215.5340909091
-84,55210 Music Publishing,65287.3452380952
-3041,55220 Music and Other Sound Recording Activities,48789.1111476488
-253,56100 Radio Broadcasting,75450.8616600791
-151,56210 Free-to-Air Television Broadcasting,75978.8543046358
-86,56220 Cable and Other Subscription Broadcasting,48652.9186046512
-1010,57000 Internet Publishing and Broadcasting,56445.9316831683
-997,58010 Wired Telecommunications Network Operation,49256.9949849549
-218,58020 Other Telecommunications Network Operation,48977.5091743119
-781,58090 Other Telecommunications Services,47529.1113956466
-617,59100 Internet Service Providers and Web Search Portals,51340.376012966
-1431,59210 Data Processing and Web Hosting Services,50865.2529699511
-96,59220 Electronic Information Storage Services,59599.2083333333
-209,60100 Libraries and Archives,55029.971291866
-1073,60200 Other Information Services,58835.0568499534
-47,62210 Banking,63994.5106382979
-14,62220 Building Society Operation,58052.2857142857
-273,62290 Other Depository Financial Intermediation,66990.8131868132
-200,62300 Non-Depository Financing,64430.795
-8609,62400 Financial Asset Investing,86033.7835985597
-34,63100 Life Insurance,42671.7058823529
-13,63210 Health Insurance,68442.3076923077
-228,63220 General Insurance,63856.9385964912
-9991,64110 Financial Asset Broking Services,84695.3940546492
-5733,64190 Other Auxiliary Finance and Investment Services,79042.2421070993
-671,64200 Auxiliary Insurance Services,71741.6154992548
-3725,66110 Passenger Car Rental and Hiring,57688.2518120805
-1422,66190 Other Motor Vehicle and Transport Equipment Rental and Hiring,75315.7187060478
-202,66200 Farm Animal and Bloodstock Leasing,71989.0346534654
-1270,66310 Heavy Machinery and Scaffolding Rental and Hiring,76870.7559055118
-189,66320 Video and Other Electronic Media Rental and Hiring,44759.8941798942
-3370,66390 Other Goods and Equipment Rental and Hiring n.e.c.,66241.8557863502
-1717,66400 Non-Financial Intangible Assets (Except Copyrights) Leasing,67705.0943506115
-1593,67110 Residential Property Operators,61506.5593220339
-3199,67120 Non-Residential Property Operators,106857.647389809
-8483,67200 Real Estate Services,54959.9423552988
-1995,69100 Scientific Research Services,80537.9954887218
-8852,69210 Architectural Services,60398.2788070493
-1177,69220 Surveying and Mapping Services,68916.945624469
-11800,69230 Engineering Design and Engineering Consulting Services,74786.7594915254
-18209,69240 Other Specialised Design Services,50278.0257015762
-1338,69250 Scientific Testing and Analysis Services,79434.322122571
-13596,69310 Legal Services,185460.187849367
-32280,69320 Accounting Services,57948.6068153656
-8689,69400 Advertising Services,53360.3267349522
-1953,69500 Market Research and Statistical Services,56228.2124935996
-292,69610 Corporate Head Office Management Services,63481.3219178082
-2251,69621 Environmental Management Consultancy,66665.8023100844
-1271,69622 OHAS Consultancy,73573.1510621558
-40449,69629 Management Advice and Related Consulting Services n.e.c.,82566.3015896561
-1535,69700 Veterinary Services,77169.2006514658
-16578,69910 Professional Photographic Services,46979.2774158523
-6239,"69990 Other Professional, Scientific and Technical Services n.e.c.",54541.9065555377
-19142,70000 Computer System Design and Related Services,68871.2838261415
-951,72110 Employment Placement and Recruitment Services,63667.7949526814
-9483,72120 Labour Supply Services,40346.0749762733
-4413,72200 Travel Agency and Tour Arrangement Services,39238.4772263766
-7890,72910 Office Administrative Services,39477.5313054499
-1344,72920 Document Preparation Services,44858.4308035714
-262,72930 Credit Reporting and Debt Collection Services,50198.3740458015
-102,72940 Call Centre Operation,33077.7450980392
-7500,72990 Other Administrative Services n.e.c.,43037.5988
-52251,73110 Building and Other Industrial Cleaning Services,30184.7731335285
-1678,73120 Building Pest Control Services,46779.3343265793
-23092,73130 Gardening Services,36664.0852676252
-607,73200 Packaging Services,33764.7940691928
-28,75100 Central Government Administration,54639.1428571429
-31,75200 State Government Administration,105790.451612903
-84,75300 Local Government Administration,52916.5
-80,75400 Justice,95093.9
-19,75520 Foreign Government Representation,110152.631578947
-21,77110 Police Services,72241.1904761905
-3640,77120 Investigation and Security Services,44532.2782967033
-296,77130 Fire Protection and Other Emergency Services,71880.1655405406
-423,77190 Other Public Order and Safety Services,65723.5177304965
-62,77200 Regulatory Services,61307.0483870968
-213,80100 Preschool Education,40585.882629108
-226,80210 Primary Education,38819.889380531
-307,80220 Secondary Education,42208.2214983713
-218,80230 Combined Primary and Secondary Education,38120.2889908257
-470,80240 Special School Education,41615.285106383
-580,81011 Computer Training (Vocational),56523.0913793104
-4715,81019 Technical and Vocational Education and Training n.e.c.,59172.6475079534
-439,81020 Higher Education,78757.1184510251
-11587,82110 Sports and Physical Recreation Instruction,47352.5254164149
-10827,82120 Arts Education,40344.4573750808
-141,82191 Flying School Operation,56016.6737588653
-13589,"82199 Adult, Community and Other Education n.e.c.",46837.9662226801
-4085,82200 Educational Support Services,48027.8631578947
-99,84010 Hospitals (Except Psychiatric Hospitals),218280.606060606
-24,84020 Psychiatric Hospitals,82510.7083333333
-20481,85110 General Practice Medical Services,191411.642693228
-2482,85121 Anaesthetist (Own Account),492738.829170024
-1574,85122 Specialist Medical Clinic Operation,330628.100381194
-278,85123 Dermatologist (Own Account),362764.320143885
-631,85124 Gynaecologist and Obstetrician (Own Account),460364.315372425
-2500,85125 Psychiatrist (Own Account),168093.3636
-14592,85129 Specialist Medical Services n.e.c.,342310.126850329
-338,85202 Pathologist (Own Account),158074.642011834
-757,85203 Radiologist (Own Account),420569.536327609
-195,85209 Other Pathology and Diagnostic Imaging Services,130357.220512821
-7261,85310 Dental Services,161202.714088969
-1230,85320 Optometry and Optical Dispensing,86880.2024390244
-6988,85330 Physiotherapy Services,61919.8045220378
-3119,85340 Chiropractic and Osteopathic Services,58680.336646361
-15053,85391 Complementary and Alternative Services,32589.0445094001
-19463,85399 Other Allied Health Services (Mainstream),64277.404254226
-5,85910 Ambulance Services,57822.6
-13203,85990 Other Health Care Services n.e.c.,48739.4444444445
-22,86011 Retirement Village Operation,41537.2272727273
-187,86012 Accommodation for the Aged Operation,91161.7272727273
-1215,86090 Other Residential Care Services,33631.8098765432
-15869,87100 Child Care Services,26961.8277774277
-4651,87900 Other Social Assistance Services,48912.6587830574
-68,89100 Museum Operation,50878.1029411765
-106,89210 Zoological and Botanical Gardens Operation,41163.6037735849
-103,89220 Nature Reserves and Conservation Parks Operation,42864.572815534
-2165,90010 Performing Arts Operation,45913.8484988453
-2578,90020 Creative and Performing Arts Activities,40463.4988363072
-23611,90021 Musicians and Entertainers,48648.5354707552
-28992,"90029 Other Creative Artists, Writers and Performers",52387.1934671634
-500,90030 Performing Arts Venue Operation,50987.81
-12566,91110 Health and Fitness Centres and Gymnasia Operation,40744.8301766672
-466,91121 Jockeys,91690.3798283262
-17,91123 Professional Cricketers,112525
-112,91124 Professional Footballers,150255.455357143
-37,91125 Umpires and Referees,44079.5135135135
-1590,91126 Professional Sportspersons n.e.c.,72856.2666666667
-346,91129 Sports and Physical Recreation Clubs n.e.c.,45311.6473988439
-120,91131 Squash and Tennis Court Operation,35908.625
-360,"91139 Sports and Physical Recreation Venues, Grounds and Facilities Operation n.e.c.",47583.4305555556
-590,91140 Sports and Physical Recreation Administrative Service,56005.0762711864
-51,91210 Horse and Dog Racing Administration and Track Operation,48266.7647058824
-321,91291 Dog Training (Racing),41290.2647975078
-1377,91292 Horse Training (Racing),32041.2490922295
-837,91299 Other Horse and Dog Racing Activities,42484.2855436081
-99,91310 Amusement Parks and Centres Operation,42883.5050505051
-2575,91390 Amusement and Other Recreational Activities n.e.c.,44119.1122330097
-11,92020 Lottery Operation,68004.8181818182
-270,92091 Bookmaker,81363.2
-118,92092 TAB Agency Operation,59385.5
-166,92099 Other Gambling Activities n.e.c.,48528.8192771084
-1801,94110 Automotive Electrical Services,51848.3087173792
-403,94121 Motor Vehicle Windscreen Repair and Service,44252.0297766749
-4680,"94129 Automotive Body, Paint and Interior Repair n.e.c.",40392.2485042735
-775,94191 Motor Vehicle Clutch and Brake Repair and Service,45191.024516129
-281,94192 Motor Vehicle Radiator Repair and Service,39353.0320284698
-184,94193 Motor Vehicle Muffler and Exhaust Repair and Service,35526.8532608696
-11098,94199 Other Automotive Repair and Maintenance,48073.5409983781
-1422,94210 Domestic Appliance Repair and Maintenance,44036.2925457103
-1422,94220 Electronic (except Domestic Appliance) and Precision Equipment Repair and Maintenance,42637.4092827004
-1453,94290 Other Machinery and Equipment Repair and Maintenance,56201.19889883
-582,94910 Clothing and Footwear Repair,26510.4347079038
-6737,94990 Other Repair and Maintenance n.e.c.,40206.8724951759
-37098,95110 Hairdressing and Beauty Services,31796.3208259205
-335,95120 Diet and Weight Reduction Centre Operation,42196.0059701493
-299,"95200 Funeral, Crematorium and Cemetery Services",49253.4080267559
-2703,95310 Laundry and Dry-Cleaning Services,31709.1135775065
-679,95320 Photographic Film Processing,45357.9425625921
-39,95330 Parking Services,58448.9743589744
-363,95340 Brothel Keeping and Prostitution Services,35827.2203856749
-405,95391 Fortune Telling and Similar Services,32389.8049382716
-70,95392 Introduction Agency Services,40645.7
-7193,95393 Child Minding (Babysitting in the Home),27090.1701654386
-26859,95399 Other Personal Services n.e.c.,41440.6851707063
-379,95400 Religious Services,33199.8865435356
-2940,95510 Business and Professional Association Services,69932.287414966
-734,95520 Labour Association Services,35359.9604904632
-337,95599 Other Interest Group Services n.e.c.,44917.175074184
-86,96010 Private Households Employing Staff,30182.3837209302
-18,96020 Undifferentiated Goods-Producing Activities of Private Households for Own Use,45318.1666666667
-102,96030 Undifferentiated Service-Producing Activities of Private Households for Own Use,39212.3725490196
-12768530,Other individuals,62299.7460445329
-33599,Other,63219.687371648
+tax_num,avg_tax_incm,fine_code,fine_name
+569,48641.6203866432,01110, Nursery Production (Under Cover)
+640,52478.578125,01120, Nursery Production (Outdoors)
+166,50447.7530120482,01130, Turf Growing
+65,41558.1076923077,01140, Floriculture Production (Under Cover)
+187,55315.9251336898,01150, Floriculture Production (Outdoors)
+59,42842.3898305085,01210, Mushroom Growing
+471,31621.9341825902,01220, Vegetable Growing (Under Cover)
+1217,43312.3040262942,01230, Vegetable Growing (Outdoors)
+1480,107165.742567568,01310, Grape Growing
+5,53656.6,01320, Kiwifruit Growing
+108,45841.4444444445,01330, Berry Fruit Growing
+70,27993.1714285714,01340, Apple and Pear Growing
+130,83578.8153846154,01350, Stone Fruit Growing
+239,58942.3891213389,01360, Citrus Fruit Growing
+421,122509.377672209,01370, Olive Growing
+1464,120318.116120219,01390, Other Fruit and Tree Nut Growing
+3471,57852.9227888217,01410, Sheep Farming (Specialised)
+20013,62345.1958726828,01420, Beef Cattle Farming (Specialised)
+53,93730.4716981132,01430, Beef Cattle Feedlots (Specialised)
+6248,69637.6755761844,01440, Sheep-Beef Cattle Farming
+3461,51759.6200520081,01450, Grain-Sheep or Grain-Beef Cattle Farming
+69,34145.7971014493,01460, Rice Growing
+2091,57158.468675275,01490, Other Grain Growing
+742,52870.0175202156,01510, Sugar Cane Growing
+38,55357.4736842105,01520, Cotton Growing
+831,70200.8086642599,01590, Other Crop Growing n.e.c.
+1353,38538.8573540281,01600, Dairy Cattle Farming
+98,65319.193877551,01710, Poultry Farming (Meat)
+152,34272.875,01720, Poultry Farming (Eggs)
+22,77316.9545454546,01800, Deer Farming
+1676,60191.1837708831,01910, Horse Farming
+146,33352.698630137,01920, Pig Farming
+717,53165.3974895398,01930, Beekeeping
+1959,65183.2368555385,01990, Other Livestock Farming n.e.c.
+102,52705.1176470588,02011, Oyster Farming
+11,50071.5454545455,02019, Offshore Longline and Rack Aquaculture n.e.c.
+7,58979.5714285714,02031, Lobster Farming or Breeding
+80,56747.2875,02039, Other Onshore Aquaculture
+2793,185236.861439313,03010, Forestry
+1050,62418.5361904762,03020, Logging
+368,85591.4320652174,04111, Rock Lobster Fishing
+59,51217.0338983051,04112, Crab Potting
+196,53094.3367346939,04120, Prawn Fishing
+418,43828.9641148325,04130, Line Fishing
+158,44508.2405063291,04140," Fish Trawling, Seining and Netting"
+239,86366.0962343096,04191, Abalone Fishing
+621,51631.3929146538,04192, Marine Fishing n.e.c.
+273,48700.4725274725,04199, Other Fishing n.e.c.
+607,54172.5980230643,04200, Hunting and Trapping
+967,130337.677352637,05100, Forestry Support Services
+611,48979.0114566285,05220, Shearing Services
+8452,42583.6192617132,05290, Other Agriculture and Fishing Support Services
+66,81443.2424242424,07000, Oil and Gas Extraction
+5,92858.2,08030, Copper Ore Mining
+52,54857.4230769231,08040, Gold Ore Mining
+7,83112.4285714286,08050, Mineral Sand Mining
+7,38931.2857142857,08090, Other Metal Ore Mining
+69,86482.8115942029,09110, Gravel and Sand Quarrying
+154,53206.6623376623,09190, Other Construction Material Mining
+88,32603.25,09902, Opal Mining
+11,50877.5454545455,09903, Gemstone Mining (Except Opals and Diamonds)
+34,98345.5294117647,09909, Other Non-Metallic Mineral Mining and Quarrying n.e.c.
+6,70800.6666666667,10112, Petroleum Exploration Services
+34,12336.8823529412,10121, Mineral Exploration (Own Account)
+85,71390.7294117647,10122, Mineral Exploration Services
+401,105511.768079801,10900, Other Mining Support Services
+208,34696.8557692308,11110, Meat Processing
+106,33036.6226415094,11120, Poultry Processing
+5,43924.2,11130, Cured Meat and Smallgoods Manufacturing
+14,40096.0714285714,11200, Seafood Processing
+12,28630.5833333333,11310, Milk and Cream Processing
+21,46876.9523809524,11320, Ice Cream Manufacturing
+43,39441.9302325581,11330, Cheese and Other Dairy Product Manufacturing
+343,48603.1457725948,11400, Fruit and Vegetable Processing
+55,40462.6,11500, Oil and Fat Manufacturing
+38,32210.5,11620," Cereal, Pasta and Baking Mix Manufacturing"
+127,39592.3070866142,11710, Bread Manufacturing (Factory based)
+644,34223.2267080745,11720, Cake and Pastry Manufacturing (Factory based)
+13,40660.6923076923,11730, Biscuit Manufacturing (Factory based)
+1342,33559.7563338301,11740, Bakery Product Manufacturing (Non-factory based)
+160,34813.68125,11820, Confectionery Manufacturing
+5,31855.2,11910," Potato, Corn and Other Crisp Manufacturing"
+73,44656.4520547945,11920, Prepared Animal and Bird Feed Manufacturing
+1050,39729.380952381,11990, Other Food Product Manufacturing n.e.c.
+79,45254.5696202532,12110," Soft Drink, Cordial and Syrup Manufacturing"
+60,68516.6333333333,12120, Beer Manufacturing
+5,13614.2,12130, Spirit Manufacturing
+405,68744.9703703704,12140, Wine and Other Alcoholic Beverage Manufacturing
+44,25613.6363636364,13120, Natural Textile Manufacturing
+13,41227.5384615385,13130, Synthetic Textile Manufacturing
+346,37751.5924855491,13200," Leather Tanning, Fur Dressing and Leather Product Manufacturing"
+61,39551.1803278689,13310, Textile Floor Covering Manufacturing
+15,43546,13320," Rope, Cordage and Twine Manufacturing"
+1233,32700.2887266829,13330, Cut and Sewn Textile Product Manufacturing
+634,34192.2902208202,13340, Textile Finishing and Other Textile Product Manufacturing
+85,27578.6705882353,13400, Knitted Product Manufacturing
+4159,32895.057465737,13510, Clothing Manufacturing
+74,31792.5540540541,13520, Footwear Manufacturing
+128,38477.5078125,14110, Log Sawmilling
+69,37895.1449275362,14120, Wood Chipping
+276,41945.8768115942,14130, Timber Resawing and Dressing
+32,46202.375,14910, Prefabricated Wooden Building Manufacturing
+4249,49733.9453989174,14920, Wooden Structural Fitting and Component Manufacturing
+5,27271,14940, Reconstituted Wood Product Manufacturing
+583,38469.538593482,14990, Other Wood Product Manufacturing n.e.c.
+11,30860.5454545455,15100," Pulp, Paper and Paperboard Manufacturing"
+138,38043.5507246377,15230, Paper Stationery Manufacturing
+23,30347.2608695652,15290, Other Converted Paper Product Manufacturing
+1376,42252.179505814,16110, Printing
+1467,44786.2317655078,16120, Printing Support Services
+846,59379.6749408983,16200, Reproduction of Recorded Media
+7,100901.428571429,17090, Other Petroleum and Coal Product Manufacturing
+27,29036.3703703704,18120, Basic Organic Chemical Manufacturing
+16,52104.4375,18290, Other Basic Polymer Manufacturing
+13,32506.8461538462,18310, Fertiliser Manufacturing
+87,79740.2643678161,18410, Human Pharmaceutical and Medicinal Product Manufacturing
+6,92502.3333333333,18420, Veterinary Pharmaceutical and Medicinal Product Manufacturing
+1344,32413.0677083333,18510, Cleaning Compound Manufacturing
+425,36133,18520, Cosmetic and Toiletry Preparation Manufacturing
+71,40533.323943662,18910, Photographic Chemical Product Manufacturing
+12,79238.3333333333,18920, Explosive Manufacturing
+25,45408.76,18990, Other Basic Chemical Product Manufacturing n.e.c.
+5,34712.8,19110, Polymer Film and Sheet Packaging Material Manufacturing
+49,58692.8979591837,19120, Rigid and Semi-Rigid Polymer Product Manufacturing
+4,20809.5,19130, Polymer Foam Product Manufacturing
+52,38463.8653846154,19140, Tyre Manufacturing
+137,37062.9562043796,19160, Paint and Coatings Manufacturing
+89,39925.7528089888,19190, Other Polymer Product Manufacturing
+6,63302.6666666667,19200, Natural Rubber Product Manufacturing
+392,42028.7831632653,20100, Glass and Glass Product Manufacturing
+7,29510.2857142857,20210, Clay Brick Manufacturing
+636,39837.5,20290, Other Ceramic Product Manufacturing
+44,29421.0227272727,20310, Cement and Lime Manufacturing
+173,41895.4739884393,20320, Plaster Product Manufacturing
+334,53365.0838323353,20330, Ready-Mixed Concrete Manufacturing
+373,46688.0884718499,20340, Concrete Product Manufacturing
+293,49136.5802047782,20900, Other Non-Metallic Mineral Product Manufacturing
+143,56173.3846153846,21100, Iron Smelting and Steel Manufacturing
+84,37281.4523809524,21210, Iron and Steel Casting
+35,47685.7142857143,21220, Steel Pipe and Tube Manufacturing
+10,37507.6,21320, Aluminium Smelting
+38,54638.7894736842,21390, Other Basic Non-Ferrous Metal Manufacturing
+7,62338.4285714286,21410, Non-Ferrous Metal Casting
+36,40764.6666666667,21420," Aluminium Rolling, Drawing, Extruding"
+46,57101.347826087,21490, Other Basic Non-Ferrous Metal Product Manufacturing
+40,39739.65,22100, Iron and Steel Forging
+732,53104,22210, Structural Steel Fabricating
+247,48442.4898785425,22220, Prefabricated Metal Building Manufacturing
+268,48109.4141791045,22230, Architectural Aluminium Product Manufacturing
+32,41278.5,22240, Metal Roof and Guttering Manufacturing (except Aluminium)
+369,50970.5691056911,22290, Other Structural Metal Product Manufacturing
+934,64353.9571734475,22310," Boiler, Tank and Other Heavy Gauge Metal Container Manufacturing"
+30,49532.8,22390, Other Metal Container Manufacturing
+381,56849.0157480315,22400, Sheet Metal Product Manufacturing (except Metal Structural and Container Products)
+28,37772.7857142857,22910, Spring and Wire Product Manufacturing
+541,47872.0979667283,22930, Metal Coating and Finishing
+3190,53772.5880877743,22990, Other Fabricated Metal Product Manufacturing n.e.c.
+117,38796.5213675214,23110, Motor Vehicle Manufacturing
+373,41825.6112600536,23120, Motor Vehicle Body and Trailer Manufacturing
+72,49965.0138888889,23130, Automotive Electrical Component Manufacturing
+175,46329.6171428571,23190, Other Motor Vehicle Parts Manufacturing
+163,50116.7116564417,23910, Shipbuilding and Repair Services
+1008,42905.9067460318,23920, Boatbuilding and Repair Services
+14,46985.5714285714,23930, Railway Rolling Stock Manufacturing and Repair Services
+374,70611.9598930481,23940, Aircraft Manufacturing and Repair Services
+166,43113.5301204819,23990, Other Transport Equipment Manufacturing n.e.c.
+59,61372.2372881356,24110," Photographic, Optical and Ophthalmic Equipment Manufacturing"
+456,66353.9890350877,24120, Medical and Surgical Equipment Manufacturing
+181,44757.3591160221,24190, Other Professional and Scientific Equipment Manufacturing
+202,56102.9801980198,24211, Computer and Related Equipment Manufacturing
+66,49211.1515151515,24219, Business Machine (Electronic) Manufacturing n.e.c.
+87,60533.4597701149,24220, Communication Equipment Manufacturing
+139,53167.035971223,24290, Other Electronic Equipment Manufacturing
+129,48433.8217054264,24310, Electric Cable and Wire Manufacturing
+128,50188.328125,24320, Electric Lighting Equipment Manufacturing
+199,54527.648241206,24390, Other Electrical Equipment Manufacturing
+37,44956.5405405405,24410, Whiteware Appliance Manufacturing
+156,32244.6153846154,24490, Other Domestic Appliance Manufacturing
+7,44289.5714285714,24510, Pump and Compressor Manufacturing
+108,49006.3518518519,24520," Fixed Space Heating, Cooling and Ventilation Equipment Manufacturing"
+119,51742.3025210084,24610, Agricultural Machinery and Equipment Manufacturing
+63,60193.1111111111,24620, Mining and Construction Machinery Manufacturing
+306,54118.0098039216,24630, Machine Tool and Parts Manufacturing
+265,39468.8490566038,24690, Other Specialised Machinery and Equipment Manufacturing
+41,51721.8048780488,24910, Lifting and Material Handling Equipment Manufacturing
+203,53565.354679803,24990, Other Machinery and Equipment Manufacturing n.e.c.
+3276,44835.1233211233,25110, Wooden Furniture and Upholstered Seat Manufacturing
+64,45165.328125,25120, Metal Furniture Manufacturing
+10,34397.5,25130, Mattress Manufacturing
+596,38343.5654362416,25190, Other Furniture Manufacturing
+2237,39283.9879302638,25910, Jewellery and Silverware Manufacturing
+624,42019.4471153846,25920," Toy, Sporting and Recreational Product Manufacturing"
+989,43213.8281092012,25990, Other Manufacturing n.e.c.
+79,77200.1139240506,26190, Other Electricity Generation
+13,48406.0769230769,26200, Electricity Transmission
+35,63544.3142857143,26300, Electricity Distribution
+162,39740.3209876543,26400, On Selling Electricity and Electricity Market Operation
+29,59392.8620689655,27000, Gas Supply
+206,55990.5145631068,28110, Water Supply
+91,54893.8901098901,28120, Sewerage and Drainage Services
+359,46343.8189415042,29110, Solid Waste Collection Services
+214,46133.7476635514,29190, Other Waste Collection Services
+265,44527.2603773585,29210, Waste Treatment and Disposal Services
+380,43029.8947368421,29220, Waste Remediation and Materials Recovery Services
+11518,51466.2432714013,30110, House Construction
+6787,51083.4999263298,30190, Other Residential Building Construction
+2280,59850.5219298246,30200, Non-Residential Building Construction
+381,61484.6509186352,31010, Road and Bridge Construction
+518,51365.3281853282,31091, Swimming and Spa Pool Construction or Installation (Below Ground Concrete or Fibreglass)
+1250,59399.9136,31099, Other Heavy and Civil Engineering Construction n.e.c.
+593,142895.212478921,32110, Land Development and Subdivision
+3608,50327.4886363636,32120, Site Preparation Services
+7923,49027.1177584248,32210, Concreting Services
+10164,44358.1608618654,32220, Bricklaying Services
+3513,49656.4323939653,32230, Roofing Services
+1304,51135.5007668712,32240, Structural Steel Erection Services
+13000,55574.8431538462,32310, Plumbing Services
+18965,61080.2781439494,32320, Electrical Services
+3121,55725.761614867,32330, Air Conditioning and Heating Services
+1149,54144.2062663185,32340, Fire and Security Alarm Installation Services
+4178,49011.1287697463,32390, Other Building Installation Services
+12775,43251.4832093933,32410, Plastering and Ceiling Services
+36870,49559.5911310008,32420, Carpentry Services
+15777,43387.6358623312,32430, Tiling and Carpeting Services
+28484,40286.8425431821,32440, Painting and Decorating Services
+1445,52452.7079584775,32450, Glazing Services
+11565,43236.7276264591,32910, Landscape Construction Services
+2720,58187.1169117647,32920, Hire of Construction Machinery with Operator
+24115,41143.4580136844,32990, Other Construction Services n.e.c.
+24,58238.7916666667,33110, Wool Wholesaling
+22,55962.3181818182,33120, Cereal Grain Wholesaling
+1221,60468.7256347256,33190, Other Agricultural Product Wholesaling
+29,49777.2068965517,33210, Petroleum Product Wholesaling
+716,39764.3575418994,33221, Metal Waste and Scrap Wholesaling
+32,55988.25,33229, Other Metal and Mineral Wholesaling
+223,46115.2242152466,33230, Industrial and Agricultural Chemical Product Wholesaling
+180,51865.9444444445,33310, Timber Wholesaling
+181,50656.9834254144,33320, Plumbing Goods Wholesaling
+479,46444.6012526096,33390, Other Hardware Goods Wholesaling
+37,60277.8918918919,34110, Agricultural and Construction Machinery Wholesaling
+203,55035.4679802956,34190, Other Specialised Industrial Machinery and Equipment Wholesaling
+126,66713.6031746032,34910, Professional and Scientific Goods Wholesaling
+119,55220.9831932773,34920, Computer and Computer Peripheral Wholesaling
+86,46419.7325581395,34930, Telecommunication Goods Wholesaling
+503,50151.8051689861,34940, Other Electrical and Electronic Goods Wholesaling
+240,50472.4541666667,34990, Other Machinery and Equipment Wholesaling n.e.c.
+190,58671.9421052632,35010, Car Wholesaling
+31,62160.2903225806,35020, Commercial Vehicle Wholesaling
+36,54469.4722222222,35030, Trailer and Other Motor Vehicle Wholesaling
+397,46992.3299748111,35040, Motor Vehicle New Parts Wholesaling
+360,40825.0388888889,35050, Motor Vehicle Dismantling and Used Parts Wholesaling
+31,37686.7741935484,36010, General Line Grocery Wholesaling
+181,45327.0497237569,36020," Meat, Poultry and Smallgoods Wholesaling"
+41,40773.9268292683,36030, Dairy Produce Wholesaling
+114,43095.8421052632,36040, Fish and Seafood Wholesaling
+345,40189.5188405797,36050, Fruit and Vegetable Wholesaling
+97,50464.3505154639,36061, Liquor Wholesaling
+40,50990.5,36062, Tobacco Product Wholesaling
+741,43630.8893387314,36090, Other Grocery Wholesaling
+169,37241.9349112426,37110, Textile Product Wholesaling
+542,48443.7601476015,37120, Clothing and Footwear Wholesaling
+222,56574.5225225225,37200, Pharmaceutical and Toiletry Goods Wholesaling
+116,42107.5862068966,37310, Furniture and Floor Covering Wholesaling
+316,42035.8987341772,37320, Jewellery and Watch Wholesaling
+269,44770.1524163569,37330, Kitchen and Diningware Wholesaling
+231,51004.0303030303,37340, Toy and Sporting Goods Wholesaling
+108,48272.1851851852,37350, Book and Magazine Wholesaling
+95,38594.0842105263,37360, Paper Product Wholesaling
+1863,46549.9871175523,37390, Other Goods Wholesaling n.e.c.
+1023,46026.4555229717,38000, Commission-Based Wholesaling
+1031,38923.7934044617,39110, Car Retailing
+168,46071.9285714286,39120, Motor Cycle Retailing
+166,45743.0602409639,39130, Trailer and Other Motor Vehicle Retailing
+69,48680.463768116,39211, Motor Vehicle Battery Retailing
+548,47496.7098540146,39219, Motor Vehicle Parts Retailing n.e.c.
+184,45444.2336956522,39220, Tyre Retailing
+183,58226.1639344262,40000, Fuel Retailing
+1017,32250.0294985251,41100, Supermarket and Grocery Stores
+519,43325.1464354528,41211, Meat Retailing (Except Poultry or Canned Meat)
+142,36106.3309859155,41212, Fresh Fish Retailing
+19,33123.7894736842,41213, Fresh Poultry Retailing
+629,36896.0349761526,41220, Fruit and Vegetable Retailing
+223,49686.865470852,41230, Liquor Retailing
+4051,37712.6768699087,41290, Other Specialised Food Retailing
+701,35577.5106990014,42110, Furniture Retailing
+452,45316.0597345133,42120, Floor Coverings Retailing
+1225,36586.4653061225,42130, Houseware Retailing
+1029,37702.4246841594,42140, Manchester and Other Textile Goods Retailing
+2062,46630.8128031038,42210," Electrical, Electronic and Gas Appliance Retailing"
+975,43460.4492307692,42220, Computer and Computer Peripheral Retailing
+451,43688.4767184035,42290, Other Electrical and Electronic Goods Retailing
+495,42382.8686868687,42310, Hardware and Building Supplies Retailing
+800,40833.335,42320, Garden Supplies Retailing
+1063,46861.8889934149,42410, Sport and Camping Equipment Retailing
+769,46381.821846554,42420, Entertainment Media Retailing
+1108,41525.1868231047,42430, Toy and Game Retailing
+275,32720.0872727273,42441, Newsagents
+560,44461.9285714286,42442, Book Retailing
+228,50867.3333333333,42450, Marine Equipment Retailing
+7734,39024.5777088182,42510, Clothing Retailing
+359,39788.356545961,42520, Footwear Retailing
+818,36958.8740831296,42530, Watch and Jewellery Retailing
+1205,36937.8970954357,42590, Other Personal Accessory Retailing
+14,39955.2142857143,42600, Department Stores
+2496,177992.639022436,42711, Chemist or Pharmacy Operations
+818,43923.1687041565,42712," Cosmetics, Perfumes and Toiletry Goods Retailing (Except Direct Marketing) n.e.c."
+541,42855.7282809612,42720, Stationery Goods Retailing
+35,59351.6285714286,42731, Pawnbroking
+737,32470.8656716418,42732, Antiques Retailing (Except Pawnbroking or Disposal Stores)
+992,31743.5574596774,42733, Disposal Stores (Second Hand Goods Retailing Except Pawnbroking and Antiques)
+2450,34884.5555102041,42740, Flower Retailing
+203,46215.6650246306,42791, Swimming Pool and Spa Retailing
+987,41406.3890577508,42792, Art Dealers (Including Retail Art Gallery Operation Except by Direct Marketing)
+100,46961.72,42793, Adult Sex Shop Operation
+1002,34348.745508982,42794, Pets Retailing
+7189,37702.7016274864,42799, Other Store-Based Retailing n.e.c.
+1790,46277.4899441341,43101," Cosmetics, Perfumes and Toiletry Goods Retailing by Direct Marketing (Except Commission Based)"
+1242,40492.9371980676,43102, Jewellery Retailing by Direct Marketing (Except Commission Based)
+6420,41849.041588785,43109, Non-Store Retailing n.e.c.
+1053,44181.7701804369,43201," Cosmetics, Perfumes and Toiletry Goods Retailing Commission Based"
+140,39263.4642857143,43202, Jewellery Retailing Commission Based
+4378,43348.3391959799,43209, Retail Commission-Based Buying and/or Selling n.e.c.
+3967,48559.5276027225,44000, Accommodation
+6645,30411.7984951091,45110, Cafes and Restaurants
+6478,30827.38036431,45120, Takeaway Food Services
+3959,38940.3793887345,45130, Catering Services
+307,36195.3778501629,45200," Pubs, Taverns and Bars"
+90,35120.8444444445,45301, Licensed Clubs (Hospitality) Operation
+72,36425.6527777778,45302, Unlicensed Clubs (Hospitality) Operation
+16920,38501.9669030733,46100, Road Freight Transport
+333,42797.5345345345,46210, Interurban and Rural Bus Transport
+802,44996.0211970075,46220, Urban Bus Transport (Including Tramway)
+23283,39654.8798694326,46231, Taxi Service Operation
+14060,41913.5919630157,46239, Other Road Transport (Except Taxi)
+10,98954.2,47100, Rail Freight Transport
+178,107830.556179775,48100, Water Freight Transport
+250,66558.056,48200, Water Passenger Transport
+216,96336.212962963,49001, Aircraft Charter and Lease
+32,65132.40625,49009, Other Air and Space Transport
+540,53515.3462962963,50100, Scenic and Sightseeing Transport
+3616,41446.9452433628,50290, Other Transport n.e.c.
+1071,40436.7703081233,51010, Postal Services
+21155,33319.9110848499,51020, Courier Pick-up and Delivery Services
+23,46907.2608695652,52110, Stevedoring Services
+25,63430.48,52120, Port and Water Transport Terminal Operations
+519,58190.140655106,52190, Other Water Transport Support Services
+317,76390.1514195584,52200, Airport Operations and Other Air Transport Support Services
+160,50342.93125,52910, Customs Agency Services
+263,46945.8403041825,52920, Freight Forwarding Services
+53385,35137.3665449096,52991, Taxi Driver
+1882,41854.6896918172,52999, Other Transport Support Services n.e.c.
+12,360817.75,53010, Grain Storage Services
+497,53520.9597585513,53090, Other Warehousing and Storage Services
+200,55700.15,54110, Newspaper Publishing
+299,52416.3578595318,54120, Magazine and Other Periodical Publishing
+1422,56295.85302391,54130, Book Publishing
+18,36756.6666666667,54140, Directory and Mailing List Publishing
+268,48414.8917910448,54190," Other Publishing (except Software, Music and Internet)"
+1143,78955.2720909886,54200, Software Publishing
+6172,55249.444426442,55110, Motion Picture and Video Production
+104,50115.5865384615,55120, Motion Picture and Video Distribution
+42,55847.2380952381,55130, Motion Picture Exhibition
+704,-89215.5340909091,55140, Post-production Services and Other Motion Picture and Video Activities
+84,65287.3452380952,55210, Music Publishing
+3041,48789.1111476488,55220, Music and Other Sound Recording Activities
+253,75450.8616600791,56100, Radio Broadcasting
+151,75978.8543046358,56210, Free-to-Air Television Broadcasting
+86,48652.9186046512,56220, Cable and Other Subscription Broadcasting
+1010,56445.9316831683,57000, Internet Publishing and Broadcasting
+997,49256.9949849549,58010, Wired Telecommunications Network Operation
+218,48977.5091743119,58020, Other Telecommunications Network Operation
+781,47529.1113956466,58090, Other Telecommunications Services
+617,51340.376012966,59100, Internet Service Providers and Web Search Portals
+1431,50865.2529699511,59210, Data Processing and Web Hosting Services
+96,59599.2083333333,59220, Electronic Information Storage Services
+209,55029.971291866,60100, Libraries and Archives
+1073,58835.0568499534,60200, Other Information Services
+47,63994.5106382979,62210, Banking
+14,58052.2857142857,62220, Building Society Operation
+273,66990.8131868132,62290, Other Depository Financial Intermediation
+200,64430.795,62300, Non-Depository Financing
+8609,86033.7835985597,62400, Financial Asset Investing
+34,42671.7058823529,63100, Life Insurance
+13,68442.3076923077,63210, Health Insurance
+228,63856.9385964912,63220, General Insurance
+9991,84695.3940546492,64110, Financial Asset Broking Services
+5733,79042.2421070993,64190, Other Auxiliary Finance and Investment Services
+671,71741.6154992548,64200, Auxiliary Insurance Services
+3725,57688.2518120805,66110, Passenger Car Rental and Hiring
+1422,75315.7187060478,66190, Other Motor Vehicle and Transport Equipment Rental and Hiring
+202,71989.0346534654,66200, Farm Animal and Bloodstock Leasing
+1270,76870.7559055118,66310, Heavy Machinery and Scaffolding Rental and Hiring
+189,44759.8941798942,66320, Video and Other Electronic Media Rental and Hiring
+3370,66241.8557863502,66390, Other Goods and Equipment Rental and Hiring n.e.c.
+1717,67705.0943506115,66400, Non-Financial Intangible Assets (Except Copyrights) Leasing
+1593,61506.5593220339,67110, Residential Property Operators
+3199,106857.647389809,67120, Non-Residential Property Operators
+8483,54959.9423552988,67200, Real Estate Services
+1995,80537.9954887218,69100, Scientific Research Services
+8852,60398.2788070493,69210, Architectural Services
+1177,68916.945624469,69220, Surveying and Mapping Services
+11800,74786.7594915254,69230, Engineering Design and Engineering Consulting Services
+18209,50278.0257015762,69240, Other Specialised Design Services
+1338,79434.322122571,69250, Scientific Testing and Analysis Services
+13596,185460.187849367,69310, Legal Services
+32280,57948.6068153656,69320, Accounting Services
+8689,53360.3267349522,69400, Advertising Services
+1953,56228.2124935996,69500, Market Research and Statistical Services
+292,63481.3219178082,69610, Corporate Head Office Management Services
+2251,66665.8023100844,69621, Environmental Management Consultancy
+1271,73573.1510621558,69622, OHAS Consultancy
+40449,82566.3015896561,69629, Management Advice and Related Consulting Services n.e.c.
+1535,77169.2006514658,69700, Veterinary Services
+16578,46979.2774158523,69910, Professional Photographic Services
+6239,54541.9065555377,69990," Other Professional, Scientific and Technical Services n.e.c."
+19142,68871.2838261415,70000, Computer System Design and Related Services
+951,63667.7949526814,72110, Employment Placement and Recruitment Services
+9483,40346.0749762733,72120, Labour Supply Services
+4413,39238.4772263766,72200, Travel Agency and Tour Arrangement Services
+7890,39477.5313054499,72910, Office Administrative Services
+1344,44858.4308035714,72920, Document Preparation Services
+262,50198.3740458015,72930, Credit Reporting and Debt Collection Services
+102,33077.7450980392,72940, Call Centre Operation
+7500,43037.5988,72990, Other Administrative Services n.e.c.
+52251,30184.7731335285,73110, Building and Other Industrial Cleaning Services
+1678,46779.3343265793,73120, Building Pest Control Services
+23092,36664.0852676252,73130, Gardening Services
+607,33764.7940691928,73200, Packaging Services
+28,54639.1428571429,75100, Central Government Administration
+31,105790.451612903,75200, State Government Administration
+84,52916.5,75300, Local Government Administration
+80,95093.9,75400, Justice
+19,110152.631578947,75520, Foreign Government Representation
+21,72241.1904761905,77110, Police Services
+3640,44532.2782967033,77120, Investigation and Security Services
+296,71880.1655405406,77130, Fire Protection and Other Emergency Services
+423,65723.5177304965,77190, Other Public Order and Safety Services
+62,61307.0483870968,77200, Regulatory Services
+213,40585.882629108,80100, Preschool Education
+226,38819.889380531,80210, Primary Education
+307,42208.2214983713,80220, Secondary Education
+218,38120.2889908257,80230, Combined Primary and Secondary Education
+470,41615.285106383,80240, Special School Education
+580,56523.0913793104,81011, Computer Training (Vocational)
+4715,59172.6475079534,81019, Technical and Vocational Education and Training n.e.c.
+439,78757.1184510251,81020, Higher Education
+11587,47352.5254164149,82110, Sports and Physical Recreation Instruction
+10827,40344.4573750808,82120, Arts Education
+141,56016.6737588653,82191, Flying School Operation
+13589,46837.9662226801,82199," Adult, Community and Other Education n.e.c."
+4085,48027.8631578947,82200, Educational Support Services
+99,218280.606060606,84010, Hospitals (Except Psychiatric Hospitals)
+24,82510.7083333333,84020, Psychiatric Hospitals
+20481,191411.642693228,85110, General Practice Medical Services
+2482,492738.829170024,85121, Anaesthetist (Own Account)
+1574,330628.100381194,85122, Specialist Medical Clinic Operation
+278,362764.320143885,85123, Dermatologist (Own Account)
+631,460364.315372425,85124, Gynaecologist and Obstetrician (Own Account)
+2500,168093.3636,85125, Psychiatrist (Own Account)
+14592,342310.126850329,85129, Specialist Medical Services n.e.c.
+338,158074.642011834,85202, Pathologist (Own Account)
+757,420569.536327609,85203, Radiologist (Own Account)
+195,130357.220512821,85209, Other Pathology and Diagnostic Imaging Services
+7261,161202.714088969,85310, Dental Services
+1230,86880.2024390244,85320, Optometry and Optical Dispensing
+6988,61919.8045220378,85330, Physiotherapy Services
+3119,58680.336646361,85340, Chiropractic and Osteopathic Services
+15053,32589.0445094001,85391, Complementary and Alternative Services
+19463,64277.404254226,85399, Other Allied Health Services (Mainstream)
+5,57822.6,85910, Ambulance Services
+13203,48739.4444444445,85990, Other Health Care Services n.e.c.
+22,41537.2272727273,86011, Retirement Village Operation
+187,91161.7272727273,86012, Accommodation for the Aged Operation
+1215,33631.8098765432,86090, Other Residential Care Services
+15869,26961.8277774277,87100, Child Care Services
+4651,48912.6587830574,87900, Other Social Assistance Services
+68,50878.1029411765,89100, Museum Operation
+106,41163.6037735849,89210, Zoological and Botanical Gardens Operation
+103,42864.572815534,89220, Nature Reserves and Conservation Parks Operation
+2165,45913.8484988453,90010, Performing Arts Operation
+2578,40463.4988363072,90020, Creative and Performing Arts Activities
+23611,48648.5354707552,90021, Musicians and Entertainers
+28992,52387.1934671634,90029," Other Creative Artists, Writers and Performers"
+500,50987.81,90030, Performing Arts Venue Operation
+12566,40744.8301766672,91110, Health and Fitness Centres and Gymnasia Operation
+466,91690.3798283262,91121, Jockeys
+17,112525,91123, Professional Cricketers
+112,150255.455357143,91124, Professional Footballers
+37,44079.5135135135,91125, Umpires and Referees
+1590,72856.2666666667,91126, Professional Sportspersons n.e.c.
+346,45311.6473988439,91129, Sports and Physical Recreation Clubs n.e.c.
+120,35908.625,91131, Squash and Tennis Court Operation
+360,47583.4305555556,91139," Sports and Physical Recreation Venues, Grounds and Facilities Operation n.e.c."
+590,56005.0762711864,91140, Sports and Physical Recreation Administrative Service
+51,48266.7647058824,91210, Horse and Dog Racing Administration and Track Operation
+321,41290.2647975078,91291, Dog Training (Racing)
+1377,32041.2490922295,91292, Horse Training (Racing)
+837,42484.2855436081,91299, Other Horse and Dog Racing Activities
+99,42883.5050505051,91310, Amusement Parks and Centres Operation
+2575,44119.1122330097,91390, Amusement and Other Recreational Activities n.e.c.
+11,68004.8181818182,92020, Lottery Operation
+270,81363.2,92091, Bookmaker
+118,59385.5,92092, TAB Agency Operation
+166,48528.8192771084,92099, Other Gambling Activities n.e.c.
+1801,51848.3087173792,94110, Automotive Electrical Services
+403,44252.0297766749,94121, Motor Vehicle Windscreen Repair and Service
+4680,40392.2485042735,94129," Automotive Body, Paint and Interior Repair n.e.c."
+775,45191.024516129,94191, Motor Vehicle Clutch and Brake Repair and Service
+281,39353.0320284698,94192, Motor Vehicle Radiator Repair and Service
+184,35526.8532608696,94193, Motor Vehicle Muffler and Exhaust Repair and Service
+11098,48073.5409983781,94199, Other Automotive Repair and Maintenance
+1422,44036.2925457103,94210, Domestic Appliance Repair and Maintenance
+1422,42637.4092827004,94220, Electronic (except Domestic Appliance) and Precision Equipment Repair and Maintenance
+1453,56201.19889883,94290, Other Machinery and Equipment Repair and Maintenance
+582,26510.4347079038,94910, Clothing and Footwear Repair
+6737,40206.8724951759,94990, Other Repair and Maintenance n.e.c.
+37098,31796.3208259205,95110, Hairdressing and Beauty Services
+335,42196.0059701493,95120, Diet and Weight Reduction Centre Operation
+299,49253.4080267559,95200," Funeral, Crematorium and Cemetery Services"
+2703,31709.1135775065,95310, Laundry and Dry-Cleaning Services
+679,45357.9425625921,95320, Photographic Film Processing
+39,58448.9743589744,95330, Parking Services
+363,35827.2203856749,95340, Brothel Keeping and Prostitution Services
+405,32389.8049382716,95391, Fortune Telling and Similar Services
+70,40645.7,95392, Introduction Agency Services
+7193,27090.1701654386,95393, Child Minding (Babysitting in the Home)
+26859,41440.6851707063,95399, Other Personal Services n.e.c.
+379,33199.8865435356,95400, Religious Services
+2940,69932.287414966,95510, Business and Professional Association Services
+734,35359.9604904632,95520, Labour Association Services
+337,44917.175074184,95599, Other Interest Group Services n.e.c.
+86,30182.3837209302,96010, Private Households Employing Staff
+18,45318.1666666667,96020, Undifferentiated Goods-Producing Activities of Private Households for Own Use
+102,39212.3725490196,96030, Undifferentiated Service-Producing Activities of Private Households for Own Use
+12768530,62299.7460445329,Other, individuals
+33599,63219.687371648,Other,""
