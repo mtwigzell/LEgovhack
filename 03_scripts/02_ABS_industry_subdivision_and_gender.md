@@ -16,7 +16,11 @@ Erika Duan
         2020](#document-the-number-of-employed-persons-per-industry-in-feb-2020)
       - [Explore whether a gender disparity due to COVID-19
         impact](#explore-whether-a-gender-disparity-due-to-covid-19-impact)
-  - [Combine analysis](#combine-analysis)
+  - [Combined analysis](#combined-analysis)
+  - [Policy impact](#policy-impact)
+      - [How can we help identify and assist people in industries most
+        affected by
+        COVID-19?](#how-can-we-help-identify-and-assist-people-in-industries-most-affected-by-covid-19)
 
 # Dataset background
 
@@ -180,32 +184,54 @@ between 2020-02 and 2020-05.
     ##         100% 
     ##  0.124287288
 
-![](02_ABS_industry_subdivision_and_gender_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+<img src="02_ABS_industry_subdivision_and_gender_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
 
-# Combine analysis
+# Combined analysis
 
 We can combine these different aspects of industry analysis to obtain a
 breakdown of how industry vulnerability to COVID-19 looks across
 multiple categories.
 
-| main\_industry                                  | growth\_since\_gfc | covid\_diff\_summary | count\_summary     | gender\_ratio\_summary                     | key |
-| :---------------------------------------------- | :----------------- | :------------------- | :----------------- | :----------------------------------------- | :-- |
-| Agriculture, Forestry and Fishing               | Decline            | 5 to 25% increase    | 250-500 thousand   | Moderate decline in female/males employed  | A   |
-| Mining                                          | Unstable growth    | 5 to 0% decline      | 100-250 thousand   | Minimal change in female/males employed    | B   |
-| Manufacturing                                   | Decline            | 5 to 0% decline      | 500-1000 thousand  | Minimal change in female/males employed    | C   |
-| Electricity, Gas, Water and Waste Services      | Unstable growth    | 5 to 25% increase    | 100-250 thousand   | Moderate increase in female/males employed | D   |
-| Construction                                    | Moderate growth    | 5 to 0% decline      | Over 1000 thousand | Minimal change in female/males employed    | E   |
-| Wholesale Trade                                 | No growth          | 0 to 5% increase     | 250-500 thousand   | Great increase in female/males employed    | F   |
-| Retail Trade                                    | No growth          | 10 to 5% decline     | Over 1000 thousand | Great decline in female/males employed     | G   |
-| Accommodation and Food Services                 | Moderate growth    | 40 to 10% decline    | 500-1000 thousand  | Great decline in female/males employed     | H   |
-| Transport, Postal and Warehousing               | Moderate growth    | 40 to 10% decline    | 500-1000 thousand  | Minimal change in female/males employed    | I   |
-| Information Media and Telecommunications        | Decline            | 40 to 10% decline    | 100-250 thousand   | Great decline in female/males employed     | J   |
-| Financial and Insurance Services                | No growth          | 0 to 5% increase     | 250-500 thousand   | Great decline in female/males employed     | K   |
-| Rental, Hiring and Real Estate Services         | No growth          | 0 to 5% increase     | 100-250 thousand   | Great increase in female/males employed    | L   |
-| Professional, Scientific and Technical Services | High growth        | 10 to 5% decline     | Over 1000 thousand | Minimal change in female/males employed    | M   |
-| Administrative and Support Services             | Moderate growth    | 40 to 10% decline    | 250-500 thousand   | Minimal change in female/males employed    | N   |
-| Public Administration and Safety                | Moderate growth    | 0 to 5% increase     | 500-1000 thousand  | Great increase in female/males employed    | O   |
-| Education and Training                          | High growth        | 10 to 5% decline     | Over 1000 thousand | Great increase in female/males employed    | P   |
-| Health Care and Social Assistance               | High growth        | 5 to 0% decline      | Over 1000 thousand | Minimal change in female/males employed    | Q   |
-| Arts and Recreation Services                    | High growth        | 40 to 10% decline    | 250-500 thousand   | Minimal change in female/males employed    | R   |
-| Other Services                                  | Moderate growth    | 40 to 10% decline    | 250-500 thousand   | Moderate decline in female/males employed  | S   |
+| main\_industry                                  | growth\_since\_gfc | covid\_diff\_summary | count\_summary     | gender\_ratio\_summary                     |
+| :---------------------------------------------- | :----------------- | :------------------- | :----------------- | :----------------------------------------- |
+| Agriculture, Forestry and Fishing               | Decline            | 5 to 25% increase    | 250-500 thousand   | Moderate decline in female/males employed  |
+| Mining                                          | Unstable growth    | 5 to 0% decline      | 100-250 thousand   | Minimal change in female/males employed    |
+| Manufacturing                                   | Decline            | 5 to 0% decline      | 500-1000 thousand  | Minimal change in female/males employed    |
+| Electricity, Gas, Water and Waste Services      | Unstable growth    | 5 to 25% increase    | 100-250 thousand   | Moderate increase in female/males employed |
+| Construction                                    | Moderate growth    | 5 to 0% decline      | Over 1000 thousand | Minimal change in female/males employed    |
+| Wholesale Trade                                 | No growth          | 0 to 5% increase     | 250-500 thousand   | Great increase in female/males employed    |
+| Retail Trade                                    | No growth          | 10 to 5% decline     | Over 1000 thousand | Great decline in female/males employed     |
+| Accommodation and Food Services                 | Moderate growth    | 40 to 10% decline    | 500-1000 thousand  | Great decline in female/males employed     |
+| Transport, Postal and Warehousing               | Moderate growth    | 40 to 10% decline    | 500-1000 thousand  | Minimal change in female/males employed    |
+| Information Media and Telecommunications        | Decline            | 40 to 10% decline    | 100-250 thousand   | Great decline in female/males employed     |
+| Financial and Insurance Services                | No growth          | 0 to 5% increase     | 250-500 thousand   | Great decline in female/males employed     |
+| Rental, Hiring and Real Estate Services         | No growth          | 0 to 5% increase     | 100-250 thousand   | Great increase in female/males employed    |
+| Professional, Scientific and Technical Services | High growth        | 10 to 5% decline     | Over 1000 thousand | Minimal change in female/males employed    |
+| Administrative and Support Services             | Moderate growth    | 40 to 10% decline    | 250-500 thousand   | Minimal change in female/males employed    |
+| Public Administration and Safety                | Moderate growth    | 0 to 5% increase     | 500-1000 thousand  | Great increase in female/males employed    |
+| Education and Training                          | High growth        | 10 to 5% decline     | Over 1000 thousand | Great increase in female/males employed    |
+| Health Care and Social Assistance               | High growth        | 5 to 0% decline      | Over 1000 thousand | Minimal change in female/males employed    |
+| Arts and Recreation Services                    | High growth        | 40 to 10% decline    | 250-500 thousand   | Minimal change in female/males employed    |
+| Other Services                                  | Moderate growth    | 40 to 10% decline    | 250-500 thousand   | Moderate decline in female/males employed  |
+
+# Policy impact
+
+## How can we help identify and assist people in industries most affected by COVID-19?
+
+By understanding how different industries are behaving, we can tailor
+different methods to help industries affected by COVID-19.
+
+For instance, Accommodation and Food Services has had:
+
+  - Moderate growth since the global financial crisis.  
+  - But a 40 to 10% decline in employed workers since COVID19 hit.
+  - Whilst being a very large industry in itself (500-1000 thousand
+    works employment).
+  - With a great decline in the ratio of female/males employed.
+
+This means that we would need examine why more women are losing work, as
+well as why all workers are losing work during COVID-19. A silver lining
+is that the industry itself has been healthily growing since the global
+financial crisis, so we would not need to worry about long term industry
+revival solutions, but need to address the COVID-19 related impact
+specifically.

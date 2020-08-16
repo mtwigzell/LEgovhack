@@ -19,7 +19,8 @@ pacman::p_load(tidyverse,
                here,
                readxl,
                kml,  
-               zoo) # for lemmatisation and stemming    
+               zoo,
+               RColorBrewer) # for lemmatisation and stemming    
 ```
 
 ```{r}
@@ -27,7 +28,26 @@ pacman::p_load(tidyverse,
 theme_clear <- theme_bw() +
   theme(panel.grid.minor = element_blank(),
         panel.grid.major = element_line(colour = "gray", linetype = "dotted"),
-        axis.text.x = element_text(angle = 90))
+        axis.text.x = element_text(angle = 90))  
+
+#-----consistent colour code-----   
+industry_key <- tibble(key = c("B", "D", "J",
+                               "K", "F", "C",
+                               "G", "R", "I",
+                               "H", "A", "Q",
+                               "M", "N", "E",
+                               "P", "O", "Z",
+                               "L", "S"),
+                       main_industry = c("Mining", "Electricity, Gas, Water and Waste Services", "Information Media and Telecommunications",  
+                                         "Financial and Insurance Services", "Wholesale Trade", "Manufacturing",
+                                         "Retail Trade", "Arts and Recreation Services", "Transport, Postal and Warehousing",
+                                         "Accommodation and Food Services", "Agriculture, Forestry and Fishing", "Health Care and Social Assistance",
+                                         "Professional, Scientific and Technical Services", "Administrative and Support Services", "Construction",
+                                         "Education and Training", "Public Administration and Safety", "Other",
+                                         "Rental, Hiring and Real Estate Services", "Other Services"))   
+
+colourCount = length(industry_key$key) 
+getPalette = colorRampPalette(brewer.pal(9, "Set1"))
 ```
 
 
@@ -249,10 +269,12 @@ post_gfc_labour %>%
              y = norm_count,
              colour = main_industry)) +
   geom_line(size = 0.8) +
+  scale_color_manual(values = getPalette(colourCount)) +   
   geom_hline(yintercept = 1, colour = "salmon", linetype = "dashed") +
   ylim(0, y_max) +
   labs(x = "Year",
-       y = "Rate of growth (normalised by first quarter)") + 
+       y = "Rate of growth (normalised by first quarter)",
+       colour = NULL) + 
   facet_wrap(~ growth_since_gfc) +
   theme_clear +
   theme(legend.position = "left")
@@ -330,11 +352,13 @@ covid_labour %>%
   ggplot(aes(x = date, 
              y = norm_count,
              colour = main_industry)) +
-  geom_line(size = 0.8) +
+  geom_line(size = 0.8) + 
+  scale_color_manual(values = getPalette(colourCount)) +   
   geom_hline(yintercept = 1, colour = "salmon", linetype = "dashed") +
   ylim(0.5, 1.5) +
   labs(x = "Year",
-       y = "Rate of growth (normalised by first quarter)") + 
+       y = "Rate of growth (normalised by first quarter)",
+       colour = NULL) + 
   facet_wrap(~ covid_diff_summary) +
   theme_clear  
 
@@ -442,17 +466,35 @@ covid_gender_summary <- covid_gender_summary %>%
   select(main_industry, gender_ratio_summary) 
 ```
 
-```{r}
+```{r, out.width = '100%'}
 #-----female/male ratio decrease versus increase between Feb 2020 to May 2020-----  
 # visualise disparity as a lollipop chart  
 
-gender_disparity %>%
-  ggplot(aes(x = date, y = female_male_ratio)) + 
-  geom_col(colour = "steelblue", width = 2) + 
-  scale_x_date(breaks = c(as.Date("2020-02-01"), as.Date("2020-05-01"))) + 
-  facet_wrap(~ main_industry, scales = "free_y") +
-  theme_clear
+gender_viz <- bind_cols(covid_gender_feb, covid_gender_may) %>%
+  rename("Feb_2020" = "date",
+         "May_2020" = "date1",
+         "Feb_ratio" = "female_male_ratio",
+         "May_ratio" = "female_male_ratio1") %>%
+  select(-c(main_industry1, Feb_2020, May_2020)) %>%
+  mutate(change = case_when(May_ratio > Feb_ratio ~ "Increase in \nfemale/male ratio",
+                            May_ratio < Feb_ratio ~ "Decrease in \nfemale/male ratio"))
 
+gender_viz %>% 
+  mutate(main_industry = fct_reorder(main_industry, May_ratio)) %>% 
+  ggplot(aes(x = May_ratio, y = main_industry, colour = change)) +
+  geom_segment(aes(x = Feb_ratio, y = main_industry,
+                   xend = May_ratio, yend = main_industry),
+               color = "black",
+               size = 1) +
+  scale_color_manual(values = c("Increase in \nfemale/male ratio" = "#0571b0",
+                                "Decrease in \nfemale/male ratio" = "#ca0020")) + 
+  geom_point() + 
+  labs(x = "Change in female/male employment ratio", 
+       y = NULL,
+       colour = NULL) + 
+  theme_bw() +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_line(colour = "gray", linetype = "dotted"))
 
 # ggsave(here::here("02_outputs", "main_industry_rate_of_change_covid_by_gender.jpeg"),
 #        height = 8,
@@ -460,7 +502,7 @@ gender_disparity %>%
 ```
 
 
-# Combine analysis   
+# Combined analysis   
 
 We can combine these different aspects of industry analysis to obtain a breakdown of how industry vulnerability to COVID-19 looks across multiple categories.  
 
@@ -478,29 +520,44 @@ main_industry_summary <- left_join(main_industry_summary, covid_gender_summary,
 
 ```{r}
 #-----add industry lookup table-----
-industry_key <- tibble(key = c("B", "D", "J",
-                               "K", "F", "C",
-                               "G", "R", "I",
-                               "H", "A", "Q",
-                               "M", "N", "E",
-                               "P", "O", "Z",
-                               "L", "S"),
-                       main_industry = c("Mining", "Electricity, Gas, Water and Waste Services", "Information Media and Telecommunications",  
-                                         "Financial and Insurance Services", "Wholesale Trade", "Manufacturing",
-                                         "Retail Trade", "Arts and Recreation Services", "Transport, Postal and Warehousing",
-                                         "Accommodation and Food Services", "Agriculture, Forestry and Fishing", "Health Care and Social Assistance",
-                                         "Professional, Scientific and Technical Services", "Administrative and Support Services", "Construction",
-                                         "Education and Training", "Public Administration and Safety", "Other",
-                                         "Rental, Hiring and Real Estate Services", "Other Services"))   
+# industry_key <- tibble(key = c("B", "D", "J",
+#                                "K", "F", "C",
+#                                "G", "R", "I",
+#                                "H", "A", "Q",
+#                                "M", "N", "E",
+#                                "P", "O", "Z",
+#                                "L", "S"),
+#                        main_industry = c("Mining", "Electricity, Gas, Water and Waste Services", "Information Media and Telecommunications",  
+#                                          "Financial and Insurance Services", "Wholesale Trade", "Manufacturing",
+#                                          "Retail Trade", "Arts and Recreation Services", "Transport, Postal and Warehousing",
+#                                          "Accommodation and Food Services", "Agriculture, Forestry and Fishing", "Health Care and Social Assistance",
+#                                          "Professional, Scientific and Technical Services", "Administrative and Support Services", "Construction",
+#                                          "Education and Training", "Public Administration and Safety", "Other",
+#                                          "Rental, Hiring and Real Estate Services", "Other Services"))   
 
-main_industry_summary <- left_join(main_industry_summary, industry_key,
-                                   by = "main_industry")
+# main_industry_summary <- left_join(main_industry_summary, industry_key,
+#                                    by = "main_industry")
 
 # write_csv(main_industry_summary, here::here("02_outputs", "clean_data", "main_industry_categorical_summary.csv"))  
 ```
 
 ```{r}
 #-----render table-----  
-knitr::kable(main_industry_summary)  
+knitr::kable(main_industry_summary)   
 ```
 
+
+# Policy impact  
+
+## How can we help identify and assist people in industries most affected by COVID-19?  
+
+By understanding how different industries are behaving, we can tailor different methods to help industries affected by COVID-19.  
+
+For instance, Accommodation and Food Services	has had:    
+
++ Moderate growth since the global financial crisis.  
++ But a 40 to 10% decline	in employed workers since COVID19 hit. 
++ Whilst being a very large industry in itself (500-1000 thousand works employment). 
++ With a great decline in the ratio of female/males employed.  
+
+This means that we would need examine why more women are losing work, as well as why all workers are losing work during COVID-19. A silver lining is that the industry itself has been healthily growing since the global financial crisis, so we would not need to worry about long term industry revival solutions, but need to address the COVID-19 related impact specifically.  
