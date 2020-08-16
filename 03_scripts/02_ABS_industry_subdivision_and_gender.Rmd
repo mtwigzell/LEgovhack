@@ -17,6 +17,7 @@ if (!require("pacman")) install.packages("pacman")
 pacman::p_load(tidyverse,
                lubridate, 
                here,
+               stringr, 
                readxl,
                kml,  
                zoo,
@@ -28,7 +29,8 @@ pacman::p_load(tidyverse,
 theme_clear <- theme_bw() +
   theme(panel.grid.minor = element_blank(),
         panel.grid.major = element_line(colour = "gray", linetype = "dotted"),
-        axis.text.x = element_text(angle = 90))  
+        axis.text.x = element_text(angle = 90),
+        strip.text = element_text(size = 8))  
 
 #-----consistent colour code-----   
 industry_key <- tibble(key = c("B", "D", "J",
@@ -44,7 +46,14 @@ industry_key <- tibble(key = c("B", "D", "J",
                                          "Accommodation and Food Services", "Agriculture, Forestry and Fishing", "Health Care and Social Assistance",
                                          "Professional, Scientific and Technical Services", "Administrative and Support Services", "Construction",
                                          "Education and Training", "Public Administration and Safety", "Other",
-                                         "Rental, Hiring and Real Estate Services", "Other Services"))   
+                                         "Rental, Hiring and Real Estate Services", "Other Services"),
+                       main_id_labels = c("Mining", "Electricity, Gas, Water \n& Waste Services", "Information Media \n& Telecommunications",  
+                                         "Financial \n& Insurance Services", "Wholesale Trade", "Manufacturing",
+                                         "Retail Trade", "Arts \n& Recreation Services", "Transport, Postal \n& Warehousing",
+                                         "Accommodation \n& Food Services", "Agriculture, Forestry \n& Fishing", "Health Care \n& Social Assistance",
+                                         "Professional, Scientific \n& Technical Services", "Administrative \n& Support Services", "Construction",
+                                         "Education \n& Training", "Public Administration \n& Safety", "Other",
+                                         "Rental, Hiring \n& Real Estate Services", "Other Services"))   
 
 colourCount = length(industry_key$key) 
 getPalette = colorRampPalette(brewer.pal(9, "Set1"))
@@ -149,6 +158,7 @@ all_labour <- tidy_labour %>%
 
 #-----visualise rate of growth over the years-----  
 all_labour %>%
+  left_join(industry_key, by = "main_industry") %>%  
   mutate(main_industry = fct_reorder(main_industry, count)) %>%
   ggplot(aes(x = date, 
              y = norm_count)) +
@@ -158,7 +168,7 @@ all_labour %>%
   ylim(0, 5) +
   labs(x = "Year",
        y = "Rate of growth (normalised by first quarter)") + 
-  facet_wrap(~ main_industry)+
+  facet_wrap(~ main_id_labels)+
   theme_clear +
   theme(legend.position = "none")
 
@@ -199,7 +209,9 @@ post_gfc_labour <- tidy_labour %>%
 y_max <- max(post_gfc_labour$norm_count) + 0.1
 
 post_gfc_labour %>%
-  mutate(main_industry = fct_reorder2(main_industry, date, count)) %>%
+  left_join(industry_key, by = "main_industry") %>% 
+  mutate(main_industry = fct_reorder2(main_industry, date, count),
+         main_industry = str_wrap(main_industry)) %>%
   ggplot(aes(x = date, 
              y = norm_count)) +
   geom_line(size = 0.8) +
@@ -207,9 +219,9 @@ post_gfc_labour %>%
   ylim(0, y_max) +
   labs(x = "Year",
        y = "Rate of growth (normalised by first quarter)") + 
-  facet_wrap(~ main_industry)+
+  facet_wrap(~ main_id_labels)+
   theme_clear +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom")  
 
 # ggsave(here::here("02_outputs", "main_industry_rate_of_change_post_gfc.csv.jpeg"),
 #        height = 8,
@@ -249,7 +261,7 @@ ts_post_gfc_labour <- ts_post_gfc_labour %>%
 
 We can then categorise different industries by how they have behaved since the global financial crisis but before COVID-19.  
 
-```{r}
+```{r, height = 10, width = 16}
 #-----visualise industry rate of employment since the post-gfc-----
 post_gfc_labour <- left_join(post_gfc_labour,
                              ts_post_gfc_labour,
@@ -267,10 +279,10 @@ post_gfc_labour_summary <- post_gfc_labour %>%
   distinct_all()
 
 post_gfc_labour %>%
-  mutate(main_industry = fct_reorder2(main_industry, date, count)) %>%  
+  left_join(industry_key, by = "main_industry") %>%  
   ggplot(aes(x = date, 
              y = norm_count,
-             colour = main_industry)) +
+             colour = main_id_labels)) +
   geom_line(size = 0.8) +
   scale_color_manual(values = getPalette(colourCount)) +   
   geom_hline(yintercept = 1, colour = "salmon", linetype = "dashed") +
@@ -352,10 +364,10 @@ covid_labour <- left_join(covid_labour, covid_labour_summary,
                           by = "main_industry")  
 
 covid_labour %>%
-  mutate(main_industry = fct_reorder2(main_industry, date, norm_count)) %>%  
+  left_join(industry_key, by = "main_industry") %>%  
   ggplot(aes(x = date, 
              y = norm_count,
-             colour = main_industry)) +
+             colour = main_id_labels)) +
   geom_line(size = 0.8) + 
   scale_color_manual(values = getPalette(colourCount)) +   
   geom_hline(yintercept = 1, colour = "salmon", linetype = "dashed") +
