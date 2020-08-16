@@ -1,0 +1,73 @@
+---
+title: "Industry EDA"
+author: "Marc Wigzell"
+date: "15 August 2020"
+output: html_document
+---
+
+Packages
+```{r}
+library(data.table)
+```
+
+Data
+```{r}
+dt = fread("../data/industry_incomes.csv")
+```
+
+Data cleaning
+```{r}
+# Subset to variables of interest
+industry = dt[, .(
+  `Number of individuals`,
+  `Broad Industry1`,
+  `Number of individuals`,
+  `Taxable income or loss3
+no.`,
+  `Taxable income or loss3
+$`,
+`Fine Industry1`
+  )]
+# Clean variable names
+industry[, no_indv := `Number of individuals`]
+industry[, "Number of individuals" := NULL]
+industry[, broad := `Broad Industry1`]
+industry[, "Broad Industry1" := NULL]
+industry[, tax_num := `Taxable income or loss3
+no.`]
+industry[, "Taxable income or loss3\nno." := NULL]
+industry[, incm_or_lss := `Taxable income or loss3
+$`]
+industry[, "Taxable income or loss3\n$" := NULL]
+setnames(industry, "Fine Industry1", "fine")
+# clean numerics
+fn_ = function(x) as.numeric(gsub(",", "", x))
+cols_ = c("no_indv", "incm_or_lss", "tax_num")
+industry[, (cols_) := lapply(X = .SD, FUN = fn_), .SDcols = cols_]
+```
+
+Calculations for export
+```{r}
+# Fine
+fine_industry = industry[, .(tax_num, incm_or_lss, fine, broad)]
+fine_industry[, avg_tax_incm := incm_or_lss/tax_num]
+fine_industry = fine_industry[, incm_or_lss := NULL]
+fine_industry[, fine_code := substr(fine, 1, 5)]
+fine_industry[, fine_name := substr(fine, 6, nchar(fine))]
+fine_industry[, fine := NULL]
+fine_industry[, broad_code := substr(broad, 1, 1)]
+fine_industry[, broad_name := substr(broad, 4, nchar(broad))]
+fine_industry[, broad := NULL]
+fwrite(fine_industry, "../fine_avg_taxable_income.csv")
+# Broad
+broad_industry = industry[, .(tax_num, incm_or_lss, broad)]
+broad_industry = broad_industry[, .(incm_or_lss = sum(incm_or_lss),
+                                    tax_num = sum(tax_num)), by = broad]
+broad_industry[, avg_tax_incm := incm_or_lss/tax_num]
+broad_industry[, incm_or_lss := NULL]
+broad_industry[, broad_code := substr(broad, 1, 1)]
+broad_industry[, broad_name := substr(broad, 4, nchar(broad))]
+broad_industry[, broad := NULL]
+fwrite(broad_industry, "../broad_avg_taxable_income.csv")
+```
+
