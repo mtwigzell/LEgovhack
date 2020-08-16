@@ -87,6 +87,9 @@ and by filtering on counts where `gender == "total"` and `employ_type ==
 
 <img src="02_ABS_industry_subdivision_and_gender_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />
 
+Data source:
+<https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls>
+
 # Explore rate of employment growth or decline rate since the global financial crisis
 
 We can then examine how the employment rate in each industy has fared
@@ -102,6 +105,9 @@ global financial crisis) and `2020-05` as our last quarter.
 
 <img src="02_ABS_industry_subdivision_and_gender_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
 
+Data source:
+<https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls>
+
 We can categorise industries by how similar their rate of employment
 growth or decline has been since February 2007 to February 2020, by
 conducting longitudinal k-means clustering by main industry (i.e. the
@@ -116,6 +122,9 @@ since the global financial crisis but before COVID-19.
 
 ![](02_ABS_industry_subdivision_and_gender_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
+Data source:
+<https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls>
+
 # Explore employment rate change between 2020-02 and 2020-05 (the COVID-19 quarter)
 
 Another aspect we would be interested in examining is specifically how
@@ -128,6 +137,9 @@ impacts already felt within Australia).
     ## -36.454527 -11.818653  -5.511917  -3.920287   2.442521  23.833658
 
 ![](02_ABS_industry_subdivision_and_gender_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+
+Data source:
+<https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls>
 
 ## Document the number of employed persons per industry in Feb 2020
 
@@ -185,6 +197,9 @@ between 2020-02 and 2020-05.
     ##  0.124287288
 
 <img src="02_ABS_industry_subdivision_and_gender_files/figure-gfm/unnamed-chunk-14-1.png" width="80%" />
+
+Data source:
+<https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls>
 
 # Combined analysis
 

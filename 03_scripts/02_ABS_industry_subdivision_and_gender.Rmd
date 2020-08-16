@@ -167,6 +167,7 @@ all_labour %>%
 #        width = 16)
 ```
 
+Data source: https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls  
 
 # Explore rate of employment growth or decline rate since the global financial crisis   
 
@@ -214,6 +215,8 @@ post_gfc_labour %>%
 #        height = 8,
 #        width = 16)
 ```
+
+Data source: https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls    
 
 We can categorise industries by how similar their rate of employment growth or decline has been since February 2007 to February 2020, by conducting longitudinal k-means clustering by main industry (i.e. the time series of each industry represents a single individual's trajectory). We can do this using the `kml` package and optimise for `k`.   
 
@@ -284,6 +287,7 @@ post_gfc_labour %>%
 #        width = 16)
 ```
 
+Data source: https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls  
 
 # Explore employment rate change between 2020-02 and 2020-05 (the COVID-19 quarter)     
 
@@ -367,6 +371,7 @@ covid_labour %>%
 #        width = 16)
 ```
 
+Data source: https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls    
 
 ## Document the number of employed persons per industry in Feb 2020   
 
@@ -501,6 +506,7 @@ gender_viz %>%
 #        width = 16)
 ```
 
+Data source: https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls    
 
 # Combined analysis   
 
