@@ -184,7 +184,7 @@ between 2020-02 and 2020-05.
     ##         100% 
     ##  0.124287288
 
-<img src="02_ABS_industry_subdivision_and_gender_files/figure-gfm/unnamed-chunk-14-1.png" width="100%" />
+<img src="02_ABS_industry_subdivision_and_gender_files/figure-gfm/unnamed-chunk-14-1.png" width="80%" />
 
 # Combined analysis
 

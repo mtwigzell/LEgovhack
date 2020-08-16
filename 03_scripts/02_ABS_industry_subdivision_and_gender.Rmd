@@ -217,7 +217,7 @@ post_gfc_labour %>%
 
 We can categorise industries by how similar their rate of employment growth or decline has been since February 2007 to February 2020, by conducting longitudinal k-means clustering by main industry (i.e. the time series of each industry represents a single individual's trajectory). We can do this using the `kml` package and optimise for `k`.   
 
-```{r, results = 'hide'}
+```{r, results = 'hide', message = FALSE, warning = FALSE}
 #-----convert into a wide time series format-----
 # can I decompose time series into the trend, seasonality and noise?  
 ts_post_gfc_labour <- post_gfc_labour %>%
@@ -466,7 +466,7 @@ covid_gender_summary <- covid_gender_summary %>%
   select(main_industry, gender_ratio_summary) 
 ```
 
-```{r, out.width = '100%'}
+```{r, out.width = '80%'}
 #-----female/male ratio decrease versus increase between Feb 2020 to May 2020-----  
 # visualise disparity as a lollipop chart  
 
