@@ -2,11 +2,10 @@
 
 # Team members:  
 + [Marc Wigzell](https://github.com/mtwigzell)  
-+ [David Lim]()  
++ [David Lim](https://github.com/dlim-au)  
 + [Elena Tartaglia](https://github.com/eigensong)  
 + [Erika Duan](https://github.com/erikaduan)  
-+ [Oliver Berry](https://github.com/OllieB123)  
-+ [Pieter Roffelsen](https://github.com/piteronio)  
++ [Oliver Berry](https://github.com/OllieB123)
 
 
 # Challenge:  
