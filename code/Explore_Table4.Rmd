@@ -23,9 +23,15 @@ table4 = readxl::read_excel(here::here("data", "6291004.xls"),
 # take every third column because that contains original counts
 table4 = table4[, seq(1, ncol(table4), 3)]
 names(table4)[names(table4) == "Series ID"] = "Quarter"
+# create a Year column
+table4 = table4 %>%
+  mutate(
+    Year = substr(Quarter, 1, 4),
+    Quarter2 = substr(Quarter, 6, 11)
+  )
 # create long version of data
 table4_long = table4 %>%
-  gather(key = "Industry", value = "Employment", -Quarter)
+  gather(key = "Industry", value = "Employment", -c(Quarter, Quarter2, Year))
 ```
 
 Make a table of industry names 
@@ -86,8 +92,64 @@ table4 %>%
   ggplot(aes(x = Quarter, y = A84090248T)) +
   geom_point()+
   geom_line() +
+  labs(title = industry_names["A84090248T"], y = "Number Employed (1000 people)")+
+  scale_x_continuous(breaks = unique(table4$Quarter))+
+  theme(axis.text.x = element_text(angle=20)) 
+```
+
+```{r}
+table4 %>%
+  filter(Quarter > as.POSIXct("2010-02-01")) %>%
+  ggplot(aes(x = Quarter2, y = A84090248T, colour = factor(Year), group = factor(Year))) +
+  geom_point()+
+  geom_line() +
   labs(title = industry_names["A84090248T"])
 ```
 
 
+```{r}
+table4 %>%
+  filter(Quarter > as.POSIXct("2010-02-01")) %>%
+  ggplot(aes(x = Quarter2, y = A84090249V, colour = factor(Year), group = factor(Year))) +
+  geom_point()+
+  geom_line() +
+  labs(title = industry_names["A84090249V"])
+```
 
+```{r}
+table4_long %>%
+  filter(Quarter > as.POSIXct("2010-02-01")) %>%
+  filter(Industry != "A84932399X") %>% # remove total %>%
+  ggplot(aes(x = Quarter2, y = Employment, group = factor(Year))) +
+  geom_point(color="grey") +
+  geom_line(color="grey") +
+  geom_line(data=subset(table4_long, Year == "2020" & Industry != "A84932399X"), colour="red") +
+  geom_point(data=subset(table4_long, Year == "2020" & Industry != "A84932399X"), colour="red") +
+  #labs(title = industry_names[Industry]) +
+  facet_wrap(.~Industry,
+             scales = "free_y")
+```
+
+```{r}
+cutdown_t4 = table4_long %>%
+  filter(Quarter > as.POSIXct("2010-02-01")) %>%
+  filter(Industry != "A84932399X") # remove total
+cutdown_t4$Industry = as.factor(cutdown_t4$Industry)
+levels(cutdown_t4$Industry) = unlist(industry_names[levels(cutdown_t4$Industry)], use.names=FALSE)
+
+  ggplot(cutdown_t4, aes(x = Quarter2, y = Employment, group = factor(Year))) +
+  geom_point(color="grey") +
+  geom_line(color="grey") +
+  geom_line(data=subset(cutdown_t4, Year == "2020"), colour="red") +
+  geom_point(data=subset(cutdown_t4, Year == "2020"), colour="red") +
+  #labs(title = industry_names[Industry]) +
+  facet_wrap(.~Industry,
+             scales = "free_y")
+```
+
+
+TODO
+
+1. Create a table for each visualisation (with variable names according to Marc's format)
+
+1. Write a sentence about each graph (to read for the video)
