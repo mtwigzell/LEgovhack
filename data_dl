@@ -1,0 +1,28 @@
+# read in files
+
+IVI_sai <- read_excel("data/IVI_DATA - January 2006 onwards.xlsx",4)
+names(IVI_sai)[-(1:4)] %>% as.numeric %>% as.Date(origin = "1899-12-30")
+
+IVI_4dig <- read_excel("data/IVI_DATA_Detailed_Occupation - March 2006 onwards.xlsx",2)
+
+abs_sheets <- excel_sheets(path = "data/6160055001_do003.xlsx")
+
+abs_names <- c("desc",
+               "jobs_COVID",
+               "jobs_month",
+               "jobs_week",
+               "jobs_week_prev",
+               "wage_COVID",
+               "wage_month",
+               "wage_week",
+               "wage_week_prev")
+
+abs <- lapply(abs_sheets[-1],read_excel, path = "data/6160055001_do003.xlsx",
+              range = "A11:I29",
+              col_names = abs_names)
+names(abs) <- abs_sheets[-1]
+
+
+abs_1 <- lapply(abs,function(x){x[-10,]})
+abs_2 <- Map(cbind, abs_1, industry = names(abs_1))
+abs_flat <- bind_rows(abs_2)
