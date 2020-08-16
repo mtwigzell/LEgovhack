@@ -19,22 +19,30 @@ Data cleaning
 ```{r}
 # Subset to variables of interest
 industry = dt[, .(
+  `Number of individuals`,
   `Broad Industry1`,
   `Number of individuals`,
   `Taxable income or loss3
-  no.`,
-  `Taxable income or loss3$`
+no.`,
+  `Taxable income or loss3
+$`,
+`Fine Industry1`
   )]
-# Rename columns
-  setnames(industry,
-  c(
-  "Broad Industry1",
-  "Taxable income or loss3
-  no.",
-  "Taxable income or loss3
-  $"
-  ),
-  c("Indutry",
-    "")
+# Clean variable names
+industry[, no_indv := `Number of individuals`]
+industry[, "Number of individuals" := NULL]
+industry[, broad := `Broad Industry1`]
+industry[, "Broad Industry1" := NULL]
+industry[, tax_num := `Taxable income or loss3
+no.`]
+industry[, "Taxable income or loss3\nno." := NULL]
+industry[, incm_or_lss := `Taxable income or loss3
+$`]
+industry[, "Taxable income or loss3\n$" := NULL]
+setnames(industry, "Fine Industry1", "fine")
+# clean numerics
+fn_ = function(x) as.numeric(gsub(",", "", x))
+cols_ = c("no_indv", "incm_or_lss", "tax_num")
+industry[, (cols_) := lapply(X = .SD, FUN = fn_), .SDcols = cols_]
 ```
 

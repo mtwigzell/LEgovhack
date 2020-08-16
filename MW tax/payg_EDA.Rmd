@@ -140,6 +140,7 @@ Based off apriori the industries that are suffering from C19: <br/>
 
 Zoom into 2018/19 FY and observe distribution of industries for companies + individuals
 ```{r}
+payg_19 = payg[fy == "2019", .(entity, industry_name, clients, industry, installments, i_c)]
 
 ```
 
