@@ -1,0 +1,20 @@
+main_industry,growth_since_gfc,covid_diff_summary,count_summary,gender_ratio_summary,key
+"Agriculture, Forestry and Fishing",Decline,5 to 25% increase,250-500 thousand,Moderate decline in female/males employed,A
+Mining,Unstable growth,5 to 0% decline,100-250 thousand,Minimal change in female/males employed,B
+Manufacturing,Decline,5 to 0% decline,500-1000 thousand,Minimal change in female/males employed,C
+"Electricity, Gas, Water and Waste Services",Unstable growth,5 to 25% increase,100-250 thousand,Moderate increase in female/males employed,D
+Construction,Moderate growth,5 to 0% decline,Over 1000 thousand,Minimal change in female/males employed,E
+Wholesale Trade,No growth,0 to 5% increase,250-500 thousand,Great increase in female/males employed,F
+Retail Trade,No growth,10 to 5% decline,Over 1000 thousand,Great decline in female/males employed,G
+Accommodation and Food Services,Moderate growth,40 to 10% decline,500-1000 thousand,Great decline in female/males employed,H
+"Transport, Postal and Warehousing",Moderate growth,40 to 10% decline,500-1000 thousand,Minimal change in female/males employed,I
+Information Media and Telecommunications,Decline,40 to 10% decline,100-250 thousand,Great decline in female/males employed,J
+Financial and Insurance Services,No growth,0 to 5% increase,250-500 thousand,Great decline in female/males employed,K
+"Rental, Hiring and Real Estate Services",No growth,0 to 5% increase,100-250 thousand,Great increase in female/males employed,L
+"Professional, Scientific and Technical Services",High growth,10 to 5% decline,Over 1000 thousand,Minimal change in female/males employed,M
+Administrative and Support Services,Moderate growth,40 to 10% decline,250-500 thousand,Minimal change in female/males employed,N
+Public Administration and Safety,Moderate growth,0 to 5% increase,500-1000 thousand,Great increase in female/males employed,O
+Education and Training,High growth,10 to 5% decline,Over 1000 thousand,Great increase in female/males employed,P
+Health Care and Social Assistance,High growth,5 to 0% decline,Over 1000 thousand,Minimal change in female/males employed,Q
+Arts and Recreation Services,High growth,40 to 10% decline,250-500 thousand,Minimal change in female/males employed,R
+Other Services,Moderate growth,40 to 10% decline,250-500 thousand,Moderate decline in female/males employed,S
