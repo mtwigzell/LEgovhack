@@ -1,0 +1,29 @@
+---
+title: "occs_industry"
+author: "Project 1342"
+date: "16 August 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
+```
+
+```{r}
+library(data.table)
+library(ggplot2)
+library(tibble)
+```
+
+```{r}
+dt = fread("../data/Division_Census2016.csv", header = T)
+```
+
+### Top three occupations by industry
+```{r}
+dt_ = dt[, .(Broad, Top_Occp1, Top_Occp2, Top_Occp3, Occupation_Name)]
+setnames(dt_, names(dt_), c("Industry letter", "Top occupation 1", "Top occupation 2", "Top occupation 3", "Industry name"))
+setcolorder(dt_, c("Industry letter", "Industry name", "Top occupation 1", "Top occupation 2", "Top occupation 3"))
+knitr::kable(dt_)
+```
+

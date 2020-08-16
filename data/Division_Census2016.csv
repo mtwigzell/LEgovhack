@@ -1,0 +1,20 @@
+Broad,Top_Occp1,Top_Occp2,Top_Occp3,Occupation_Name,Public_Transport,ATSI,Bad_English,Government_Employee,Year_12_Finishers,Male,Studying
+A,Livestock Farmers,Crop Farmers,Mixed Crop and Livestock Farmers,"Agriculture, forestry and fishing",0.01,0.02,0.27,0.00,0.45,0.69,0.05
+B,"Drillers, Miners and Shot Firers",Metal Fitters and Machinists,Other Building and Engineering Technicians,Mining,0.18,0.04,0.03,0.00,0.55,0.84,0.05
+C,Structural Steel and Welding Trades Workers,Production Managers,Food and Drink Factory Workers,Manufacturing,0.04,0.01,0.15,0.01,0.56,0.72,0.07
+D,Truck Drivers,Electricians,Electrical Distribution Trades Workers,"Electricity, gas, water and waste services",0.13,0.02,0.03,0.36,0.61,0.76,0.06
+E,Carpenters and Joiners,Construction Managers,Electricians,Construction,0.05,0.02,0.12,0.00,0.50,0.87,0.08
+F,Storepersons,Sales Assistants (General),Sales Representatives,Wholesale trade,0.06,0.01,0.08,0.00,0.64,0.66,0.07
+G,Sales Assistants (General),Retail Managers,Checkout Operators and Office Cashiers,Retail trade,0.09,0.02,0.06,0.00,0.63,0.43,0.23
+H,Waiters,Bar Attendants and Baristas,Kitchenhands,Accommodation and food services,0.14,0.02,0.13,0.00,0.64,0.46,0.35
+I,Truck Drivers,Automobile Drivers,Couriers and Postal Deliverers,"Transport, postal and warehousing",0.08,0.02,0.05,0.12,0.55,0.77,0.06
+J,Telecommunications Trades Workers,Journalists and Other Writers,"Film, Television, Radio and Stage Directors",Information media and telecommunications,0.28,0.01,0.02,0.07,0.82,0.60,0.10
+K,Bank Workers,Financial Investment Advisers and Managers,Credit and Loans Officers (Aus) / Finance Clerks (NZ),Financial and insurance services,0.39,0.01,0.01,0.03,0.84,0.48,0.07
+L,Real Estate Sales Agents,General Clerks,Land Economists and Valuers,"Rental, hiring and real estate services",0.10,0.01,0.04,0.02,0.70,0.49,0.08
+M,Accountants,Solicitors,Software and Applications Programmers,"Professional, scientific and technical services",0.26,0.01,0.02,0.03,0.86,0.55,0.09
+N,Commercial Cleaners,Domestic Cleaners,Human Resource Professionals,Administrative and support services,0.15,0.02,0.14,0.01,0.62,0.47,0.11
+O,Police,General Clerks,Security Officers and Guards,Public administration and safety,0.16,0.03,0.01,0.89,0.74,0.53,0.08
+P,Primary School Teachers,Secondary School Teachers,Education Aides,Education and training,0.09,0.02,0.02,0.52,0.83,0.29,0.13
+Q,Registered Nurses,Aged and Disabled Carers,Child Carers,Health care and social assistance,0.08,0.02,0.03,0.24,0.73,0.21,0.13
+R,"Sports Coaches, Instructors and Officials",Fitness Instructors,"Amusement, Fitness and Sports Centre Managers",Arts and recreation services,0.11,0.02,0.04,0.06,0.72,0.52,0.21
+S,Hairdressers,Motor Mechanics,Beauty Therapists,Other services,0.07,0.02,0.12,0.01,0.54,0.54,0.11

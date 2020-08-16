@@ -1,0 +1,177 @@
+---
+title: "Impact to Industries by COVID-19"
+author: "Elena Tartaglia"
+date: "15 August 2020"
+output: github_document
+df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(RColorBrewer)
+OUTPUT_FILEPATH = here::here("output")
+```
+
+*Challenge: How can we help identify and assist people in industries most affected by COVID-19?*
+
+Investigate which industries have been most impacted by COVID-19.
+
+```{r}
+# Read data
+table4 = readxl::read_excel("C:/Users/mtwig/OneDrive/Desktop/LEgovhack/data/6291004.xls",
+                            sheet = "Data1",
+                            col_names = TRUE,
+                            skip = 9)
+# take every third column because that contains original counts
+table4 = table4[, seq(1, ncol(table4), 3)]
+names(table4)[names(table4) == "Series ID"] = "Quarter"
+# create a Year column
+table4 = table4 %>%
+  mutate(
+    Year = substr(Quarter, 1, 4),
+    Quarter2 = substr(Quarter, 6, 11)
+  )
+# create long version of data
+table4_long = table4 %>%
+  gather(key = "Industry", value = "Employment", -c(Quarter, Quarter2, Year))
+```
+
+
+```{r}
+#Make a table of industry names 
+
+industry_names = readxl::read_excel("C:/Users/mtwig/OneDrive/Desktop/LEgovhack/data/6291004.xls",
+                            sheet = "Data1",
+                            col_names = paste0("C", 1:61),
+                            n_max = 10)
+industry_names = industry_names[, seq(1, ncol(industry_names), 3)]
+colnames(industry_names) = industry_names[10, ]
+
+industry_names = lapply(industry_names[1, ], function(x) sub("\\s+$", "", stringr::str_extract(x, "[^;]*")))
+```
+
+
+```{r}
+# Read in industry codes
+
+industry_codes = read.csv("C:/Users/mtwig/OneDrive/Desktop/LEgovhack/data/broad_avg_taxable_income.csv")
+industry_codes = industry_codes[, c("broad_code", "broad_name")]
+```
+
+```{r}
+table4_long$broad_name=unlist(industry_names[table4_long$Industry], use.names = FALSE)
+```
+
+
+```{r}
+# Add industry codes to long table.
+table4_long = table4_long %>%
+  full_join(industry_codes, by = "broad_name")
+```
+
+
+
+```{r}
+## Table for raw employment figures plots per industry
+employment_since_2018 = table4_long %>%
+  filter(Quarter > as.POSIXct("2018-02-01", origin = "1970-01-01")) %>%
+  filter(Industry != "A84932399X")
+#write.csv(employment_since_2018,
+#          file.path(OUTPUT_FILEPATH,"broad_employment_since_2018.csv"))
+```
+
+
+```{r}
+employment_since_2010 = table4_long %>%
+  filter(Quarter > as.POSIXct("2010-02-01", origin = "1970-01-01")) %>%
+  filter(Industry != "A84932399X") # remove total
+#write.csv(employment_since_2010,
+#          file.path(OUTPUT_FILEPATH,"broad_employment_since_2010.csv"))
+```
+
+
+## Plots
+
+
+```{r}
+colourCount = length(unique(table4_long$Industry))
+getPalette = colorRampPalette(brewer.pal(9, "Set1"))
+```
+
+
+
+Employment numbers
+
+
+```{r}
+setDT(employment_since_2018)
+employment_since_2018[, Quarter := as.IDate(Quarter, origin = "1970-01-01")]
+ggplot(employment_since_2018, aes(x = Quarter, y = Employment, color = broad_name)) +
+  geom_point()+
+  geom_line() +
+  labs(y = "Number Employed (1000 people)")+
+  scale_x_continuous(breaks = unique(employment_since_2018$Quarter))+
+  theme(axis.text.x = element_text(angle=20)) +
+  scale_color_manual(values = getPalette(colourCount))
+```
+
+
+The two hardest hit
+
+```{r}
+setDT(table4)
+table4[, Quarter := as.IDate(Quarter, origin = "1970-01-01")]
+table4 %>%
+  filter(Quarter > as.POSIXct("2018-02-01")) %>%
+  ggplot(aes(x = Quarter, y = A84090248T)) +
+  geom_point( color = getPalette(colourCount)[1])+
+  geom_line( color = getPalette(colourCount)[1]) +
+  labs(title = industry_names["A84090248T"], y = "Number Employed (1000 people)")+
+  scale_x_continuous(breaks = unique(table4$Quarter))+
+  theme(axis.text.x = element_text(angle=20)) 
+```
+
+
+
+```{r}
+table4 %>%
+  filter(Quarter > as.POSIXct("2018-02-01")) %>%
+  ggplot(aes(x = Quarter, y = A84090249V)) +
+  geom_point(color=getPalette(colourCount)[4])+
+  geom_line(color=getPalette(colourCount)[4]) +
+  labs(title = industry_names["A84090249V"], y = "Number Employed (1000 people)")+
+  scale_x_continuous(breaks = unique(table4$Quarter))+
+  theme(axis.text.x = element_text(angle=20)) 
+```
+
+## Since 2010 {.tabset}
+
+Comparison across all industries since 2010. The employment figures for 2020 are in red.
+
+
+```{r}
+ggplot(employment_since_2010, aes(x = Quarter2, y = Employment, group = factor(Year))) +
+  geom_point(color="grey") +
+  geom_line(color="grey") +
+  geom_line(data=subset(employment_since_2010, Year == "2020"), colour="red") +
+  geom_point(data=subset(employment_since_2010, Year == "2020"), colour="red") +
+  #labs(title = industry_names[Industry]) +
+  facet_wrap(.~broad_code,
+             scales = "free_y") +
+  labs(title = "Employment since 2010",
+       x = "Quarter", y = "Number Employed (1000 people)")+
+  theme(axis.text.x = element_text(angle=90)) 
+```
+
+```{r}
+industry_codes
+```
+
+
+
+
+
+# Data Citation
+
+[Table 4: Employed persons by Industry division of main job (ANZSIC) ](https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/latest-release#data-download)

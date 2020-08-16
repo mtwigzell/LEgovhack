@@ -1,3 +1,0 @@
-"0","fine = fread(""fine_avg_taxable_income.csv"")"
-"0","broad = fread(""broad_avg_taxable_income.csv"")"
-"0","broad = broad[!broad_code %in% c(""X"",""Z"")]"

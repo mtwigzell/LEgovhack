@@ -1,13 +1,32 @@
 ---
 title: "Industry assistance during COVID-19"
 author: "Project 1342"
-date: "16 August 2020"
-output: html_document
+date: "`r Sys.Date()`"
+output:
+  github_document:
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
 ```
+
+```{r packages}
+library(tidyr)
+library(magrittr)
+library(tidyverse)
+library(lubridate)
+library(here)
+library(kml)
+library(zoo)
+library(RColorBrewer)
+library(ggplot2)
+library(data.table)
+library(dplyr)
+library(readxl)
+library(scales)
+```
+
 
 # GovHack 2020  
 
@@ -39,27 +58,744 @@ knitr::opts_chunk$set(echo = TRUE)
 + ABS labour force detailed data (May 2019)  
   + https://www.abs.gov.au/AUSSTATS/abs@.nsf/Lookup/6291.0.55.001Main+Features1May%202019?OpenDocument=  
   
-+ DESE May 2020 job seeker data  
-  + https://data.gov.au/data/dataset/job-seeker-data-may-2020/resource/62c7c4dc-4f47-489d-aa21-5f8d7c25c530  
-  + Dataset contains very detailed demographical data.  
-
-+ Datasets identifying data gaps describing vulnerable people?  
-+ Datasets with more granular information on smaller sections in broad industries that have been hardest hit?  
-
-+ ABS Job Counts
-   + https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/6160.0.55.001Week%20ending%2025%20July%202020?OpenDocument (Table 3)
-   + This breaks down each Industries job loss into age groups and gender.
-   
- + ABS 2016 Census (Tablebuilder)
- 
++ ABS 2016 Census (Tablebuilder) +
+  + https://www.abs.gov.au/websitedbs/d3310114.nsf/home/about+tablebuilder
  
  + ABS National Accounts - Input Output Tables
    + https://www.abs.gov.au/AUSSTATS/abs@.nsf/mf/5209.0.55.001
 
-## Datasets to help us identify COVID-19 zones:  
+# Part 1: Identification of industries
+```{r}
+#-----create plotting theme-----  
+theme_clear <- theme_bw() +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major = element_line(colour = "gray", linetype = "dotted"),
+        axis.text.x = element_text(angle = 90),
+        strip.text = element_text(size = 8))  
+#-----consistent colour code-----   
+industry_key <- tibble(key = c("B", "D", "J",
+                               "K", "F", "C",
+                               "G", "R", "I",
+                               "H", "A", "Q",
+                               "M", "N", "E",
+                               "P", "O", "Z",
+                               "L", "S"),
+                       main_industry = c("Mining", "Electricity, Gas, Water and Waste Services", "Information Media and Telecommunications",  
+                                         "Financial and Insurance Services", "Wholesale Trade", "Manufacturing",
+                                         "Retail Trade", "Arts and Recreation Services", "Transport, Postal and Warehousing",
+                                         "Accommodation and Food Services", "Agriculture, Forestry and Fishing", "Health Care and Social Assistance",
+                                         "Professional, Scientific and Technical Services", "Administrative and Support Services", "Construction",
+                                         "Education and Training", "Public Administration and Safety", "Other",
+                                         "Rental, Hiring and Real Estate Services", "Other Services"),
+                       main_id_labels = c("Mining", "Electricity, Gas, Water \n& Waste Services", "Information Media \n& Telecommunications",  
+                                         "Financial \n& Insurance Services", "Wholesale Trade", "Manufacturing",
+                                         "Retail Trade", "Arts \n& Recreation Services", "Transport, Postal \n& Warehousing",
+                                         "Accommodation \n& Food Services", "Agriculture, Forestry \n& Fishing", "Health Care \n& Social Assistance",
+                                         "Professional, Scientific \n& Technical Services", "Administrative \n& Support Services", "Construction",
+                                         "Education \n& Training", "Public Administration \n& Safety", "Other",
+                                         "Rental, Hiring \n& Real Estate Services", "Other Services"))   
+colourCount = length(industry_key$key) 
+getPalette = colorRampPalette(brewer.pal(9, "Set1"))
+```
 
-+ NSW COVID-19 location information  
-  + https://data.gov.au/search?format=csv&format=arcgis%20rest%20service&page=2&q=covid  
+
+# Dataset background  
+
+The **Employed persons by Industry sub-division of main job (ANZSIC) and Sex** dataset used for analysis can be found from  [here](https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/latest-release#industry-occupation-and-sector), where it is listed as Table 6.      
+
+Sheets of interest:   
+
++ All data sheets with prefix "Data".      
++ Data sheets contain counts of employed persons by industry sub-division of main job (ANZSIC) and sex, and is updated quarterly, including before Covid-19 industry impact (quarter = 2020-05).    
+
+```{r, message = FALSE, warning = FALSE, results = 'hide', echo = F}
+#-----load table 6-----
+# https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/latest-release#industry-occupation-and-sector
+data_path <- here::here("data", "2020-1980_ABS_industry_subdivision_and_sex.xlsx")
+labour_datasets <- data_path %>%
+  excel_sheets() %>%
+  set_names() %>%
+  str_subset(., "Data.") %>%  
+  map_dfc(read_excel,
+         col_names = T, 
+         path = data_path,
+         n_max = 154) 
+labour_datasets <- labour_datasets %>%
+  slice(10: nrow(labour_datasets)) %>%
+  rename(date = ...1) %>%
+  mutate(date = as.Date(as.numeric(date), origin = "1899-12-30")) 
+#-----remove summary columns-----  
+remove_cols <- str_subset(colnames(labour_datasets), "(^Employed)|(^\\> Employed)")  
+labour_datasets <- labour_datasets %>%
+  select(- remove_cols)
+#-----clean labour datasets-----  
+tidy_labour <- labour_datasets %>%
+  pivot_longer(cols = -date,
+               names_to = "column_name",
+               values_to = "count") # units in 1000s  
+tidy_labour <- tidy_labour %>%
+  mutate(count = as.numeric(count),
+         main_industry = str_extract(column_name, "^[A-Z][^;]+(?=;)"),
+         sub_industry = str_extract(column_name, "^\\s{0,1}\\>{1}[^;]+"),
+         sub_industry = str_replace(sub_industry, "\\>", ""),
+         sub_industry = case_when(is.na(sub_industry) ~ "None",
+                                  TRUE ~ sub_industry), 
+         gender = str_extract(column_name, "(Males)|(Females)"),
+         gender = case_when(is.na(gender) ~ "total",
+                            TRUE ~ tolower(gender)),  
+         employ_type = str_extract(column_name, "(?<=Employed)[^;]+(?=;)")) %>%
+  mutate_at(vars(contains("_industry"), employ_type), ~ trimws(.x)) %>% 
+  fill(main_industry, .direction = "down") %>%
+  select(-column_name)  
+# check data missingness
+colSums(is.na(tidy_labour)) # no missing values  
+# write_csv(tidy_labour, here::here("02_outputs", "clean_data", "tidy_industry_sub_division_and_gender.csv"))  
+```
+
+```{r, echo = F, include = F}
+# check main_industry levels   
+unique(tidy_labour$main_industry)   
+# check tidy_labour structure
+str(tidy_labour)   
+```
+
+
+# Explore overall employment changes by main industry      
+
+Let's first examine the historical rate of employment growth or decline per industry.   
+We can do this by filtering for the total employed persons count per industry (i.e. by filtering away rows of counts for all sub-industries, and by filtering on counts where `gender == "total"` and `employ_type == "total"`).         
+
+```{r, out.width = '100%'}
+#-----create all_labour-----
+# dataset of changes in the rate of persons employed by main industry  
+all_labour <- tidy_labour %>%
+  filter(sub_industry == "None",
+         gender == "total",
+         employ_type == "total") %>%  
+  select(date,
+         count,
+         main_industry) %>%
+  group_by(main_industry) %>%
+  arrange(date) %>% 
+  mutate(norm_factor = first(na.omit(count)),
+         norm_count = count/norm_factor) %>%
+  ungroup() 
+# unique(all_labour$main_industry)
+# note: does not contain Other from industry_key  
+#-----visualise rate of growth over the years-----  
+all_labour %>%
+  left_join(industry_key, by = "main_industry") %>%  
+  mutate(main_industry = fct_reorder(main_industry, count)) %>%
+  ggplot(aes(x = date, 
+             y = norm_count)) +
+  geom_line(size = 0.8) +
+  geom_vline(xintercept = as.Date("2007-05-01"), colour = "salmon", linetype = "dashed") +
+  geom_vline(xintercept = as.Date("2020-02-01"), colour = "firebrick", linetype = "dashed") +
+  ylim(0, 5) +
+  labs(x = "Year",
+       y = "Rate of growth (normalised by first quarter)") + 
+  facet_wrap(~ main_id_labels)+
+  theme_clear +
+  theme(legend.position = "none")
+# ggsave(here::here("02_outputs", "main_industry_rate_of_change_all.csv.jpeg"),
+#        height = 8,
+#        width = 16)
+```
+
+Data source: https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls  
+
+# Explore rate of employment growth or decline rate since the global financial crisis   
+
+We can then examine how the employment rate in each industy has fared since the global financial crisis but before the onset of COVID-19, to get an ideal of recent growth versus declines per industry.  
+This would affect our policy decisions about whether an industry can be boosted, or reskilling for current workers may be required as the industry declines for broader economic reasons.   
+
+Let's examine how the employment rate in each industry has grown or declined with `2017-02` as our starting quarter (i.e. the year of the global financial crisis) and `2020-05` as our last quarter.  
+
+```{r, out.width = '100%'}
+#-----filter changes and explore long term picture-----  
+post_gfc_labour <- tidy_labour %>%
+  filter(between(date, as.Date("2007-02-01"), as.Date("2020-02-01"))) %>%
+  filter(sub_industry == "None",
+         gender == "total",
+         employ_type == "total") %>%  
+  select(date,
+         count,
+         main_industry) %>%
+  group_by(main_industry) %>%
+  arrange(date) %>% 
+  mutate(norm_factor = first(na.omit(count)),
+         norm_count = count/norm_factor) %>%
+  ungroup() 
+# unique(all_labour$main_industry)
+# does not contain Other from industry_key  
+#-----visualise rate of growth over the years-----  
+y_max <- max(post_gfc_labour$norm_count) + 0.1
+post_gfc_labour %>%
+  left_join(industry_key, by = "main_industry") %>% 
+  mutate(main_industry = fct_reorder2(main_industry, date, count),
+         main_industry = str_wrap(main_industry)) %>%
+  ggplot(aes(x = date, 
+             y = norm_count)) +
+  geom_line(size = 0.8) +
+  geom_hline(yintercept = 1, colour = "salmon", linetype = "dashed") +
+  ylim(0, y_max) +
+  labs(x = "Year",
+       y = "Rate of growth (normalised by first quarter)") + 
+  facet_wrap(~ main_id_labels)+
+  theme_clear +
+  theme(legend.position = "bottom")  
+# ggsave(here::here("02_outputs", "main_industry_rate_of_change_post_gfc.csv.jpeg"),
+#        height = 8,
+#        width = 16)
+```
+
+Data source: https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls    
+
+We can categorise industries by how similar their rate of employment growth or decline has been since February 2007 to February 2020, by conducting longitudinal k-means clustering by main industry (i.e. the time series of each industry represents a single individual's trajectory). We can do this using the `kml` package and optimise for `k`.   
+
+```{r, results = 'hide', message = FALSE, warning = FALSE}
+#-----convert into a wide time series format-----
+# can I decompose time series into the trend, seasonality and noise?  
+ts_post_gfc_labour <- post_gfc_labour %>%
+  select(date, main_industry, norm_count) %>%
+  pivot_wider(id_cols = main_industry, names_from = date, values_from = norm_count)
+# no time to explore time series decomposition analysis or rolling mean 
+#-----create cld object-----  
+post_gfc_labour_cld <- cld(ts_post_gfc_labour[-1], idAll = ts_post_gfc_labour$main_industry)
+#-----optimise for k clusters-----
+kml(post_gfc_labour_cld,
+    parAlgo = parALGO(distanceName = "euclidean")) 
+plotAllCriterion(post_gfc_labour_cld)
+try(choice(post_gfc_labour_cld))  
+#-----save output-----
+ts_post_gfc_labour$post_gfc_clusters <- as.character(getClusters(post_gfc_labour_cld, 6)) 
   
- + Job Loses - SA4
-   + https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/6160.0.55.001Week%20ending%2025%20July%202020?OpenDocument (Table 5)
+ts_post_gfc_labour <- ts_post_gfc_labour %>%
+  select(main_industry,
+         post_gfc_clusters)  
+```
+
+We can then categorise different industries by how they have behaved since the global financial crisis but before COVID-19.  
+
+```{r, height = 10, width = 16}
+#-----visualise industry rate of employment since the post-gfc-----
+post_gfc_labour <- left_join(post_gfc_labour,
+                             ts_post_gfc_labour,
+                             by = "main_industry")  
+post_gfc_labour <- post_gfc_labour %>%
+  mutate(growth_since_gfc = case_when(post_gfc_clusters == "A" ~ "Moderate growth",
+                                      post_gfc_clusters == "B" ~ "No growth",
+                                      post_gfc_clusters == "C" ~ "High growth",
+                                      post_gfc_clusters == "D" ~ "Decline",
+                                      post_gfc_clusters %in% c("E", "F") ~ "Unstable growth"))  
+post_gfc_labour_summary <- post_gfc_labour %>%
+  select(main_industry, growth_since_gfc) %>%
+  distinct_all()
+post_gfc_labour %>%
+  left_join(industry_key, by = "main_industry") %>%  
+  ggplot(aes(x = date, 
+             y = norm_count,
+             colour = main_id_labels)) +
+  geom_line(size = 0.8) +
+  scale_color_manual(values = getPalette(colourCount)) +   
+  geom_hline(yintercept = 1, colour = "salmon", linetype = "dashed") +
+  ylim(0, y_max) +
+  labs(x = "Year",
+       y = "Rate of growth (normalised by first quarter)",
+       colour = NULL) + 
+  facet_wrap(~ growth_since_gfc) +
+  theme_clear +
+  theme(legend.position = "left")
+# ggsave(here::here("02_outputs", "main_industry_rate_of_change_post_gfc.csv.jpeg"),
+#        height = 8,
+#        width = 16)
+```
+
+Data source: https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls  
+
+# Explore employment rate change between 2020-02 and 2020-05 (the COVID-19 quarter)     
+
+Another aspect we would be interested in examining is specifically how each industry's employment rate has changed since the onset of COVID-19. From our dataset, we can take this period to be between 2020-02 (the onset of COVID-19 cases reported from overseas) and 2020-05 (COVID-19 impacts already felt within Australia).    
+
+```{r}
+#-----filter to the Covid19 quarter-----  
+covid_labour <- tidy_labour %>%
+  filter(between(date, as.Date("2020-02-01"), as.Date("2020-05-01"))) %>%
+  filter(sub_industry == "None",
+         gender == "total",
+         employ_type == "total") %>%  
+  select(date,
+         count,
+         main_industry) %>%
+  group_by(main_industry) %>%
+  arrange(date) %>% 
+  mutate(norm_factor = first(na.omit(count)),
+         norm_count = count/norm_factor) %>%
+  ungroup() 
+covid_labour_feb <- covid_labour %>%
+  filter(date == as.Date("2020-02-01"))  
+covid_labour_may <- covid_labour %>%
+  filter(date == as.Date("2020-05-01"))
+# create covid_labour_summary
+covid_labour_summary <- covid_labour_may %>%
+  select(date, main_industry)
+covid_labour_summary$covid_diff <- (covid_labour_may$norm_count - covid_labour_feb$norm_count) * 100
+```
+
+```{r}
+#-----calculate Covid19 performance quantiles-----  
+covid_labour_summary$covid_diff %>%
+  quantile(prob = seq(0, 1, 0.2)) %>%
+  round() %>%
+  knitr::kable(col.names = "count")
+# we could convert quartiles into categories 
+# covid_labour_summary <- covid_labour_summary %>%
+#   mutate(covid_diff_summary = cut(covid_diff, 
+#                                   breaks = quantile(covid_diff , probs=seq(0, 1, by = 0.2), na.rm=TRUE), 
+#                                   labels = c("37 to 12% decrease", "12 to 6 % decrease", "6 to 4% decrease", "4% decrease to 2% increase", "2 increase to 24% increase"),
+#                                   include.lowest = TRUE)) %>%
+#   select(main_industry, covid_diff_summary)  
+# but a more realistic method is to categorise performance outselves  
+covid_labour_summary <- covid_labour_summary %>%
+  mutate(covid_diff_summary = case_when(between(covid_diff, -40, -10) ~ "40 to 10% decline",
+                                        between(covid_diff, -9.999, -5) ~ "10 to 5% decline",
+                                        between(covid_diff, -4.999, 0) ~ "5 to 0% decline",
+                                        between(covid_diff, 0.001, 5) ~ "0 to 5% increase",
+                                        between(covid_diff, 5.001, 25) ~ "5 to 25% increase")) %>%
+  select(main_industry, covid_diff_summary)
+#-----left join covid_labour and covid_labour_summary and visualise covid_labour-----   
+covid_labour <- left_join(covid_labour, covid_labour_summary,
+                          by = "main_industry")  
+covid_labour %>%
+  left_join(industry_key, by = "main_industry") %>%  
+  ggplot(aes(x = date, 
+             y = norm_count,
+             colour = main_id_labels)) +
+  geom_line(size = 0.8) + 
+  scale_color_manual(values = getPalette(colourCount)) +   
+  geom_hline(yintercept = 1, colour = "salmon", linetype = "dashed") +
+  ylim(0.5, 1.5) +
+  labs(x = "Year",
+       y = "Rate of growth (normalised by first quarter)",
+       colour = NULL) + 
+  facet_wrap(~ covid_diff_summary) +
+  theme_clear  
+# ggsave(here::here("02_outputs", "main_industry_rate_of_change_covid.jpeg"),
+#        height = 8,
+#        width = 16)
+```
+
+Data source: https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls    
+
+## Document the number of employed persons per industry in Feb 2020   
+
+Since our descriptions of industry change have relied on relative metrics (i.e. normalised rates of growth or decline in employment numbers), it is important to also describe industries by the number of employed persons per industry. This way, we can also classify industries as small, medium or large sized industries (ideally, the ABS would already have an industry classification system for employment size).    
+
+```{r}  
+#-----filter by 2020-02-01 for total employed person counts-----  
+covid_feb_labour_count <- tidy_labour %>%
+  filter(date == as.Date("2020-02-01")) %>%
+  filter(sub_industry == "None",
+         gender == "total",
+         employ_type == "total") %>%  
+  select(date,
+         count,
+         main_industry) 
+covid_feb_labour_count$count %>%
+  quantile(prob = seq(0, 1, 0.2)) %>%
+  knitr::kable(col.names = "total employed person counts")
+# create a category describing industry size (in terms of employed persons)  
+covid_feb_labour_count <- covid_feb_labour_count %>%
+  mutate(count_summary =  case_when(between(count, 100, 250) ~ "100-250 thousand",
+                                    between(count, 250.001, 500) ~ "250-500 thousand",
+                                    between(count, 500.001, 1000) ~ "500-1000 thousand",
+                                    between(count, 1000.001, 2000) ~ "Over 1000 thousand")) 
+covid_feb_labour_summary <- covid_feb_labour_count %>%
+  select(main_industry, count_summary) 
+knitr::kable(covid_feb_labour_summary)
+```
+
+
+## Explore whether a gender disparity due to COVID-19 impact  
+
+A gender disparity metric can include whether there is a:  
+
++ Greater decrease in female compared to male workers.  
++ Modest decrease in female compared to male workers.
++ Minimal gender disparity.  
++ Modest decrease in male compared to female workers.  
++ Greater decreased in male compared to female workers.   
+
+since gender is strongly associated with the industry of employment, it may be useful to calculate the ratio of female to male employed persons per industry first.  
+We can then visualise whether there has been a change in this rate between 2020-02 and 2020-05.  
+
+```{r}
+#-----filter for female/male worker ratio for 2020-02 and 2020-05-----  
+gender_disparity <- tidy_labour %>%
+  filter(between(date, as.Date("2020-02-01"), as.Date("2020-05-01"))) %>%
+  filter(sub_industry == "None",
+         gender %in% c("males", "females"),
+         employ_type == "total") %>%  
+  select(date,
+         count,
+         main_industry,
+         gender)
+gender_disparity <- gender_disparity %>%
+  group_by(main_industry, date) %>%
+  mutate(male_count = first(na.omit(count)),
+         female_male_ratio = count/male_count) %>%
+  ungroup() %>%
+  filter(gender == "females") %>%
+  select(date, main_industry, female_male_ratio)  
+# calculate the change in female/male ratio from May to Feb    
+covid_gender_feb <- gender_disparity %>%
+  filter(date == as.Date("2020-02-01"))  
+covid_gender_may <- gender_disparity %>%
+  filter(date == as.Date("2020-05-01"))
+covid_gender_summary <- covid_gender_may %>%
+  select(date, main_industry)
+covid_gender_summary$gender_ratio <- (covid_gender_may$female_male_ratio - covid_gender_feb$female_male_ratio) 
+```
+
+```{r}
+#-----calculate quantiles for change in female/male work ratio-----
+covid_gender_summary$gender_ratio  %>%
+  quantile(prob = seq(0, 1, 0.2))
+# create a category describing industry size (in terms of employed persons)  
+covid_gender_summary <- covid_gender_summary %>%
+  mutate(gender_ratio_summary =  case_when(between(gender_ratio, -0.15, -0.05) ~ "Great decline in female/males employed",
+                                           between(gender_ratio, -0.0499, -0.02) ~ "Moderate decline in female/males employed",
+                                           between(gender_ratio, -0.01999, 0.02) ~ "Minimal change in female/males employed",
+                                           between(gender_ratio, 0.02001, 0.05) ~ "Moderate increase in female/males employed",
+                                           between(gender_ratio, 0.05001, 0.15) ~ "Great increase in female/males employed")) 
+covid_gender_summary <- covid_gender_summary %>%
+  select(main_industry, gender_ratio_summary) 
+```
+
+```{r, out.width = '80%'}
+#-----female/male ratio decrease versus increase between Feb 2020 to May 2020-----  
+# visualise disparity as a lollipop chart  
+gender_viz <- bind_cols(covid_gender_feb, covid_gender_may) %>%
+  rename("Feb_2020" = "date...1",
+         "May_2020" = "date...4",
+         "Feb_ratio" = "female_male_ratio...3",
+         "May_ratio" = "female_male_ratio...6",
+         "main_industry" = "main_industry...2",
+         "main_industry1" = "main_industry...5") %>%
+  select(-c(main_industry1, Feb_2020, May_2020)) %>%
+  mutate(change = case_when(May_ratio > Feb_ratio ~ "Increase in \nfemale/male ratio",
+                            May_ratio < Feb_ratio ~ "Decrease in \nfemale/male ratio"))
+gender_viz %>% 
+  mutate(main_industry = fct_reorder(main_industry, May_ratio)) %>% 
+  ggplot(aes(x = May_ratio, y = main_industry, colour = change)) +
+  geom_segment(aes(x = Feb_ratio, y = main_industry,
+                   xend = May_ratio, yend = main_industry),
+               color = "black",
+               size = 1) +
+  scale_color_manual(values = c("Increase in \nfemale/male ratio" = "#0571b0",
+                                "Decrease in \nfemale/male ratio" = "#ca0020")) + 
+  geom_point() + 
+  labs(x = "Change in female/male employment ratio", 
+       y = NULL,
+       colour = NULL) + 
+  theme_bw() +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major.y = element_line(colour = "gray", linetype = "dotted"))
+# ggsave(here::here("02_outputs", "main_industry_rate_of_change_covid_by_gender.jpeg"),
+#        height = 8,
+#        width = 16)
+```
+
+Data source: https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/may-2020/6291006.xls    
+
+# Combined analysis   
+
+We can combine these different aspects of industry analysis to obtain a breakdown of how industry vulnerability to COVID-19 looks across multiple categories.  
+
+```{r}
+#-----join main_industry summary tables----- 
+main_industry_summary <- left_join(post_gfc_labour_summary, covid_labour_summary,
+                                   by = "main_industry")  
+main_industry_summary <- left_join(main_industry_summary, covid_feb_labour_summary,
+                                   by = "main_industry")  
+main_industry_summary <- left_join(main_industry_summary, covid_gender_summary,
+                                   by = "main_industry")    
+```
+
+```{r}
+#-----add industry lookup table-----
+# industry_key <- tibble(key = c("B", "D", "J",
+#                                "K", "F", "C",
+#                                "G", "R", "I",
+#                                "H", "A", "Q",
+#                                "M", "N", "E",
+#                                "P", "O", "Z",
+#                                "L", "S"),
+#                        main_industry = c("Mining", "Electricity, Gas, Water and Waste Services", "Information Media and Telecommunications",  
+#                                          "Financial and Insurance Services", "Wholesale Trade", "Manufacturing",
+#                                          "Retail Trade", "Arts and Recreation Services", "Transport, Postal and Warehousing",
+#                                          "Accommodation and Food Services", "Agriculture, Forestry and Fishing", "Health Care and Social Assistance",
+#                                          "Professional, Scientific and Technical Services", "Administrative and Support Services", "Construction",
+#                                          "Education and Training", "Public Administration and Safety", "Other",
+#                                          "Rental, Hiring and Real Estate Services", "Other Services"))   
+# main_industry_summary <- left_join(main_industry_summary, industry_key,
+#                                    by = "main_industry")
+# write_csv(main_industry_summary, here::here("02_outputs", "clean_data", "main_industry_categorical_summary.csv"))  
+```
+
+```{r}
+#-----render table-----  
+knitr::kable(main_industry_summary)   
+```
+
+```{r}
+# Read data
+table4 = readxl::read_excel("data/6291004.xls",
+                            sheet = "Data1",
+                            col_names = TRUE,
+                            skip = 9)
+# take every third column because that contains original counts
+table4 = table4[, seq(1, ncol(table4), 3)]
+names(table4)[names(table4) == "Series ID"] = "Quarter"
+# create a Year column
+table4 = table4 %>%
+  mutate(
+    Year = substr(Quarter, 1, 4),
+    Quarter2 = substr(Quarter, 6, 11)
+  )
+# create long version of data
+table4_long = table4 %>%
+  gather(key = "Industry", value = "Employment", -c(Quarter, Quarter2, Year))
+```
+
+
+```{r}
+#Make a table of industry names 
+
+industry_names = readxl::read_excel("data/6291004.xls",
+                            sheet = "Data1",
+                            col_names = paste0("C", 1:61),
+                            n_max = 10)
+industry_names = industry_names[, seq(1, ncol(industry_names), 3)]
+colnames(industry_names) = industry_names[10, ]
+
+industry_names = lapply(industry_names[1, ], function(x) sub("\\s+$", "", stringr::str_extract(x, "[^;]*")))
+```
+
+
+```{r}
+# Read in industry codes
+
+industry_codes = read.csv("data/broad_avg_taxable_income.csv")
+industry_codes = industry_codes[, c("broad_code", "broad_name")]
+```
+
+```{r}
+table4_long$broad_name=unlist(industry_names[table4_long$Industry], use.names = FALSE)
+```
+
+
+```{r}
+# Add industry codes to long table.
+table4_long = table4_long %>%
+  full_join(industry_codes, by = "broad_name")
+```
+
+
+
+```{r}
+## Table for raw employment figures plots per industry
+employment_since_2018 = table4_long %>%
+  filter(Quarter > as.POSIXct("2018-02-01", origin = "1970-01-01")) %>%
+  filter(Industry != "A84932399X")
+```
+
+
+```{r}
+employment_since_2010 = table4_long %>%
+  filter(Quarter > as.POSIXct("2010-02-01", origin = "1970-01-01")) %>%
+  filter(Industry != "A84932399X") 
+```
+
+
+## Plots
+
+
+```{r}
+colourCount = length(unique(table4_long$Industry))
+getPalette = colorRampPalette(brewer.pal(9, "Set1"))
+```
+
+
+
+Employment numbers
+
+
+```{r}
+setDT(employment_since_2018)
+employment_since_2018[, Quarter := as.IDate(Quarter, origin = "1970-01-01")]
+ggplot(employment_since_2018, aes(x = Quarter, y = Employment, color = broad_name)) +
+  geom_point()+
+  geom_line() +
+  labs(y = "Number Employed (1000 people)")+
+  scale_x_continuous(breaks = unique(employment_since_2018$Quarter))+
+  theme(axis.text.x = element_text(angle=20)) +
+  scale_color_manual(values = getPalette(colourCount))
+```
+
+
+The two hardest hit
+
+```{r}
+setDT(table4)
+table4[, Quarter := as.IDate(Quarter, origin = "1970-01-01")]
+table4 %>%
+  filter(Quarter > as.POSIXct("2018-02-01")) %>%
+  ggplot(aes(x = Quarter, y = A84090248T)) +
+  geom_point( color = getPalette(colourCount)[1])+
+  geom_line( color = getPalette(colourCount)[1]) +
+  labs(title = industry_names["A84090248T"], y = "Number Employed (1000 people)")+
+  scale_x_continuous(breaks = unique(table4$Quarter))+
+  theme(axis.text.x = element_text(angle=20)) 
+```
+
+
+
+```{r}
+table4 %>%
+  filter(Quarter > as.POSIXct("2018-02-01")) %>%
+  ggplot(aes(x = Quarter, y = A84090249V)) +
+  geom_point(color=getPalette(colourCount)[4])+
+  geom_line(color=getPalette(colourCount)[4]) +
+  labs(title = industry_names["A84090249V"], y = "Number Employed (1000 people)")+
+  scale_x_continuous(breaks = unique(table4$Quarter))+
+  theme(axis.text.x = element_text(angle=20)) 
+```
+
+## Since 2010 {.tabset}
+
+Comparison across all industries since 2010. The employment figures for 2020 are in red.
+
+
+```{r}
+ggplot(employment_since_2010, aes(x = Quarter2, y = Employment, group = factor(Year))) +
+  geom_point(color="grey") +
+  geom_line(color="grey") +
+  geom_line(data=subset(employment_since_2010, Year == "2020"), colour="red") +
+  geom_point(data=subset(employment_since_2010, Year == "2020"), colour="red") +
+  #labs(title = industry_names[Industry]) +
+  facet_wrap(.~broad_code,
+             scales = "free_y") +
+  labs(title = "Employment since 2010",
+       x = "Quarter", y = "Number Employed (1000 people)")+
+  theme(axis.text.x = element_text(angle=90)) 
+```
+
+```{r}
+knitr::kable(industry_codes)
+```
+Data Citation
+
+[Table 4: Employed persons by Industry division of main job (ANZSIC) ](https://beta.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/latest-release#data-download)
+
+```{r, results='hide'}
+IVI_sai <- read_excel("data/IVI_DATA - January 2006 onwards.xlsx", 4)
+
+IVI_sai_1 <- pivot_longer(IVI_sai, -c(1:4), names_to = "date")
+IVI_sai_1$date %<>% as.numeric %>% as.Date(origin = "1899-12-30")
+
+names(IVI_sai)[-(1:4)] %>% as.numeric %>% as.Date(origin = "1899-12-30")
+
+IVI_4dig <-
+  read_excel("data/IVI_DATA_Detailed_Occupation - March 2006 onwards.xlsx",
+             2)
+
+abs_sheets <- excel_sheets(path = "data/6160055001_do003.xlsx")
+
+abs_names <- c(
+  "desc",
+  "jobs_COVID",
+  "jobs_month",
+  "jobs_week",
+  "jobs_week_prev",
+  "wage_COVID",
+  "wage_month",
+  "wage_week",
+  "wage_week_prev"
+)
+
+abs <-
+  lapply(
+    abs_sheets[-1],
+    read_excel,
+    path = "data/6160055001_do003.xlsx",
+    range = "A11:I29",
+    col_names = abs_names
+  )
+names(abs) <- abs_sheets[-1]
+
+
+abs_1 <- lapply(abs, function(x) {
+  x[-10, ]
+})
+abs_2 <- Map(cbind, abs_1, industry = names(abs_1))
+abs_flat <- bind_rows(abs_2)
+abs_flat[, 2:9] %<>% sapply(as.numeric)
+```
+```{r}
+ggplot(abs_flat, aes(x = industry, y = jobs_COVID)) +
+  geom_bar(aes(fill = industry), stat = "identity") +
+  scale_fill_manual(values = getPalette(colourCount)) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+```
+
+
+```{r}
+fine = fread("data/fine_avg_taxable_income.csv")
+broad = fread("data/broad_avg_taxable_income.csv")
+broad = broad[!broad_code %in% c("X", "Z")]
+```
+
+Broad plots
+```{r}
+colourCount = length(unique(broad$broad_code))
+getPalette = colorRampPalette(brewer.pal(9, "Set1"))
+broad %>%
+  ggplot(aes(x = broad_code, y = avg_tax_incm, fill = broad_name)) +
+  geom_bar(stat = "identity") +
+  ylab("Average taxable income") +
+  xlab("Industry") +
+  ggtitle("Average taxable income per industry \n (2017-2018 financial year)") +
+  scale_x_discrete(labels= broad$broad_code) +
+  scale_fill_manual(values = getPalette(colourCount)) +
+  scale_y_continuous(labels = comma)
+```
+```{r}
+dt = fread("data/Division_Census2016.csv", header = T)
+```
+
+### Top three occupations by industry
+```{r}
+dt_ = dt[, .(Broad, Top_Occp1, Top_Occp2, Top_Occp3, Occupation_Name)]
+setnames(dt_, names(dt_), c("Industry letter", "Top occupation 1", "Top occupation 2", "Top occupation 3", "Industry name"))
+setcolorder(dt_, c("Industry letter", "Industry name", "Top occupation 1", "Top occupation 2", "Top occupation 3"))
+knitr::kable(dt_)
+```
+# Policy impact  
+
+## How can we help identify and assist people in industries most affected by COVID-19?  
+
+By understanding how different industries are behaving, we can tailor different methods to help industries affected by COVID-19.  
+
+For instance, Accommodation and Food Services	has had:    
+
++ Moderate growth since the global financial crisis.  
++ But a 40 to 10% decline	in employed workers since COVID19 hit. 
++ Whilst being a very large industry in itself (500-1000 thousand works employment). 
++ With a great decline in the ratio of female/males employed.  
+
+This means that we would need examine why more women are losing work, as well as why all workers are losing work during COVID-19. A silver lining is that the industry itself has been healthily growing since the global financial crisis, so we would not need to worry about long term industry revival solutions, but need to address the COVID-19 related impact specifically.  
+
+Investigate which industries have been most impacted by COVID-19.
